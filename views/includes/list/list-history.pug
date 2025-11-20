@@ -1,0 +1,8 @@
+include ../other/breadcrumb
+  block items
+    if page.list.breadcrumb.length > 0
+      each breadcrumbObj, index in page.list.breadcrumb
+        - var cl = page.list.breadcrumb.length == index+1 ? 'font-weight-bold' : ''
+        li.breadcrumb-item.d-none.d-md-inline
+          a(href=breadcrumbObj.url style='color: var(--primary)' class=cl) 
+            | !{breadcrumbObj.text}

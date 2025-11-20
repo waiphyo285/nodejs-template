@@ -1,0 +1,82 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+
+const http = require('http')
+const app = require('../app')
+const config = require('@config/index')
+const clr = require('@utils/config/logcolor')
+const debug = require('debug')('hyper-backend:server')
+
+/**
+ * Get port from environment and store in Express.
+ */
+
+const port = normalizePort(config.PORT || '3000')
+app.set('port', port)
+
+/**
+ * Create HTTP server.
+ */
+
+const server = http.createServer(app)
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+
+server.listen(port)
+server.on('error', onError)
+server.on('listening', onListening)
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+    const port = parseInt(val, 10)
+    return isNaN(port) ? val : port >= 0 ? port : false
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+    const checkListen = (msg, code, fn) =>
+        msg !== 'listen'
+            ? (function () {
+                  throw error
+              })()
+            : fn(code)
+
+    // handle specific listen errors with friendly messages
+    const switchError = (code) =>
+        ({
+            EACCES: () => (
+                console.error(`Port ${port} requires elevated privileges`),
+                process.exit(1)
+            ),
+            EADDRINUSE: () => (
+                console.error(`Port ${port} is already in use`), process.exit(1)
+            ),
+            DEFAULT: () => {
+                throw error
+            },
+        }[code || 'DEFAULT']())
+
+    checkListen(error.syscall, error.code, switchError)
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+    const addr = server.address()
+    const bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port
+    console.info(`${clr.fg.magenta}Server  : 🚀 Listening on ` + bind)
+    debug('Listening on ' + bind)
+}

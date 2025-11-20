@@ -1,0 +1,63 @@
+.d-flex(style='width: 440px')
+  .input-select
+    select#sortSelect.form-control.input-sm.no-search-select2-picker
+      option(value="asc" selected) Default
+      option(value="a2z") A - Z
+      option(value="z2a") Z - A
+
+  .input-group.input-group-sm.ml-1
+    input.form-control#searchInput(type='text' placeholder='Type & enter...')
+    .input-group-prepend.cursor-pointer
+      button.btn.rounded-right#searchBtn(type='button')
+        i.bi.bi-search(aria-hidden='true')
+
+script.
+  $(document).ready(function() {
+    $("#searchInput").on('keyup', function(e) {
+      if (e.keyCode === 13) {
+        const searchValue = $(this).val();
+
+        searchValue && handleSearchState(searchValue)
+      }
+    });
+
+    $("#searchBtn").on('click', function() {
+      const searchValue = $("#searchInput").val();
+
+      searchValue && handleSearchState(searchValue)
+    });
+
+    $("#sortSelect").on('change', function() {
+      const sortValue = $(this).val()
+      const pageDataList = localStoreService({ key: 'entryPaging', method: 'get' })
+      const parseDataList = pageDataList ? JSON.parse(pageDataList) : [];
+
+      const sortDataList = parseDataList.sort((a, b) => {
+        switch (sortValue) {
+          case 'a2z':
+            return a['name'].localeCompare(b['name']);
+
+          case 'z2a':
+            return b['name'].localeCompare(a['name']);
+
+          default:
+            return b['_id'].localeCompare(a['_id']);
+        }
+      });
+
+      updateCurrentPage(sortDataList)
+    });
+
+    function handleSearchState(searchValue) {
+      const pageDataList = localStoreService({ key: 'entryPaging', method: 'get' })
+      const parseDataList = pageDataList ? JSON.parse(pageDataList) : [];
+
+      const filterDataList = parseDataList.filter(data => {
+        const regex = new RegExp(searchValue, "i");
+        return regex.test(data.name)
+      });
+
+      updateCurrentPage(filterDataList, false)
+    }
+  })
+

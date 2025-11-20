@@ -1,0 +1,11 @@
+mixin entryHeader(options)
+  .d-flex(style="height: 42px;")
+    block extend-title
+      include ./entry-title2
+      +entryTitle(options)
+      include ./entry-history2
+      +entryHistory(options)
+
+  include ./entry-alert
+
+  hr.mt-2

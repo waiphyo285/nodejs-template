@@ -1,0 +1,28 @@
+{
+    "en_US": {
+        "warning": "Warning",
+        "success": "Success",
+        "shop_cart": "Shopping cart",
+        "new_customer": "New customer",
+        "link_person": "Link account",
+        "unlink_person": "Unlink account",
+        "change_theme": "Change theme",
+        "new_template": "New template",
+        "filter_table": "Filter table",
+        "subscribe_plan": "Subscribe plan",
+        "edit_plan": "Edit plan"
+    },
+    "my_MM": {
+        "warning": "သတိ",
+        "success": "အောင်မြင်",
+        "shop_cart": "စျေးဝယ်ခြင်းတောင်း",
+        "new_customer": "ဝယ်ယူသူထည့်ပါ",
+        "link_person": "အကောင့် ချိတ်မည်",
+        "unlink_person": "အကောင့် ဖြုတ်မည်",
+        "change_theme": "အရောင် ပြောင်းမည်",
+        "new_template": "အပိုင်းသစ် ယူမည်",
+        "filter_table": "ဇယား စစ်ထုတ်ပါ",
+        "subscribe_plan": "စာရင်းသွင်းမည်",
+        "edit_plan": "စာရင်းပြင်မည်"
+    }
+}

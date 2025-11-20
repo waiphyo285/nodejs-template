@@ -1,0 +1,81 @@
+div.modal.fade#dialogNewTemplate(tabindex='-1', role='dialog', aria-labelledby='dialogNewTemplate')
+  div.modal-dialog.modal-dialog-centered.modal-lg.custom-modal-lg(role='document')
+    div.modal-content
+      div.modal-header
+        h5.modal-title !{content.modal.new_template}
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+      
+      div.modal-body
+        form#generatorForm.form-horizontal.form-validate(method='post', action='/dmar/quick-setup' novalidate)
+          input.input-sm#isPage(type='hidden', name='is_page', value='1')
+          
+          div.form-group
+            div.col-sm-12.mb-3
+              label.control-label(for='modal_name') Modal Name *
+              input.form-control.input-sm#modalName(name='modal_name' placeholder='sale_invoice' autocomplete='off' required)
+              span.invalid-feedback
+                | Please fill out this field. It is required to proceed.
+            
+            div.col-sm-12.mb-3
+              label.control-label(for='modal_data') Write Schema (JSON format) *
+              textarea.form-control.input-sm#modalData(name='modal_data', rows ='10' required)
+              span.invalid-feedback
+                | Please fill out this field. It is required to proceed.
+            
+      div.modal-footer.justify-content-md-center
+        button.btn.material-button.material-secondary#dialogCancel(type='button', data-dismiss='modal')
+          |  !{content.common.close}
+        
+        button.btn.material-button.material-primary#dialogGeneratorBtn(type='button', role='button')
+          i.bi.bi-save
+          |  !{content.common.save}
+
+script.
+  $(document).ready(function() {
+    $("#modalData").val(
+      `{
+        "data": {
+            "fullname": "String",
+            "address1": "String"
+        },
+        "menu": {
+            "list": "sample-list",
+            "entry": "sample-entry"
+        }
+      }`
+    )
+
+    $('#dialogGeneratorBtn').on('click', function() {
+      var form = $('#generatorForm');
+      var isValidForm = form[0].checkValidity();
+
+      if (!isValidForm) {
+        form.addClass('was-validated')
+        return
+      }
+
+      form.submit();
+    })
+
+    $('#generatorForm').submit(function (e) {
+      e.preventDefault()
+
+      var _this = this
+
+      const data = {
+        url: $(_this).attr('action'),
+        type: $(_this).attr('method'),
+        data: $(_this).serialize(),
+      }
+
+      modalServiceApi({
+        url: data.url,
+        type: data.type,
+        data: data.data,
+      }, function (data) {
+        $('#generatorForm')[0].reset();
+        $('#dialogNewTemplate').modal('toggle');
+      })
+    })
+  });

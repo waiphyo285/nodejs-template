@@ -1,0 +1,11 @@
+div.modal-footer.justify-content-md-center
+  button.btn.material-button.material-secondary#dialogCancel(type='button', data-dismiss='modal')
+    |  !{content.common.close}
+  
+  button.btn.material-button.material-primary.mx-1#dialogFilterReset(type='button' role="button")
+    i.bi.bi-arrow-clockwise
+    |  !{content.common.reset}
+  
+  button.btn.material-button.material-primary#dialogFilter(type='submit', role="button")
+    i.bi.bi-funnel
+    |  !{content.common.filter}

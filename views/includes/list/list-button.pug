@@ -1,0 +1,14 @@
+div.mb-2
+  div#tableButton.d-flex
+    block extend-btns
+      include ./list-search
+        
+      .btn-group.btn-group-sm(role='group' aria-label='list button')
+        include ./list-export
+          
+          block append
+            include ./list-filter
+
+          if ((page.read && page.edit) == true)
+            block append
+              include ./list-plus

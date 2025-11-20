@@ -1,0 +1,68 @@
+{
+    "en_US": {
+        "list": {
+            "phone": "Phone Number",
+
+            "username": "Username",
+            "user_type": "User Type",
+
+            "owner_name": "Owner Name",
+            "store_name": "Store Name",
+            "staff_name": "Staff Name",
+
+            "access_role": "Access Role",
+            "access_level": "Access Level",
+
+            "theme": "Theme",
+            "locale": "Locale"
+        },
+        "entry": {
+            "phone": "Phone Number",
+
+            "username": "Username",
+            "user_type": "User Type",
+
+            "owner_name": "Owner Name",
+            "store_name": "Store Name",
+            "staff_name": "Staff Name",
+
+            "access_role": "Access Role",
+            "access_level": "Access Level",
+
+            "password": "Password"
+        }
+    },
+    "my_MM": {
+        "list": {
+            "phone": "ဖုန်းနံပါတ်",
+
+            "username": "အသုံးပြုသူအမည်",
+            "user_type": "အသုံးပြုသူအမျိုးအစား",
+
+            "owner_name": "ပိုင်ရှင်အမည်",
+            "store_name": "စျေးဆိုင်အမည်",
+            "staff_name": "ဝန်ထမ်းအမည်",
+
+            "access_role": "အဆင့်",
+            "access_level": "သတ်မှတ်ချက်",
+
+            "theme": "အရောင်",
+            "locale": "ဘာသာစကား"
+        },
+        "entry": {
+            "phone": "ဖုန်းနံပါတ်",
+
+            "username": "အသုံးပြုသူအမည်",
+            "user_type": "အသုံးပြုသူအမျိုးအစား",
+
+            "owner_name": "ပိုင်ရှင်အမည်",
+            "store_name": "စျေးဆိုင်အမည်",
+            "staff_name": "ဝန်ထမ်းအမည်",
+
+            "access_role": "အဆင့်",
+            "access_level": "သတ်မှတ်ချက်",
+
+            "password": "လျို့ဝှက်နံပါတ်"
+        }
+    }
+}

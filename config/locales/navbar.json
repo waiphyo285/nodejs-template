@@ -1,0 +1,36 @@
+{
+    "en_US": {
+        "menu": "Menu",
+
+        "pos_panel": "POS Panel",
+        "dashboard": "Dashboard",
+        "today_sale": "Today sales",
+        "notification": "Notifications",
+        "language": "Language",
+        "setting": "Settings",
+
+        "en_US": "English",
+        "my_MM": "Myanmar",
+
+        "theme": "Edit theme",
+        "template": "New template",
+        "logout": "Logout"
+    },
+    "my_MM": {
+        "menu": "မီနူး",
+
+        "pos_panel": "အရောင်းစနစ်",
+        "dashboard": "စီမံခန့်ခွဲရန်",
+        "today_sale": "ယနေ့ရောင်းအား",
+        "notification": "အသိပေးချက်များ",
+        "language": "ဘာသာစကား",
+        "setting": "ဆက်တင်များ",
+
+        "en_US": "အင်္ဂလိပ်",
+        "my_MM": "မြန်မာ",
+
+        "theme": "အရောင်ချိန်",
+        "template": "အပိုင်းသစ်",
+        "logout": "ထွက်မည်"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "en_US": {
+        "list": {
+            "access_role": "Access Role",
+            "access_level": "Access Level",
+            "who_access": "Who Create",
+            "owner_name": "Owner Name"
+        },
+        "entry": {
+            "access_role": "Access Role",
+            "access_level": "Access Level",
+            "who_access": "Who Create",
+            "owner_name": "Owner Name"
+        }
+    },
+    "my_MM": {
+        "list": {
+            "access_role": "အဆင့်",
+            "access_level": "သတ်မှတ်ချက်",
+            "who_access": "မည်သူဖန်တီးလဲ",
+            "owner_name": "ပိုင်ရှင်အမည်"
+        },
+        "entry": {
+            "access_role": "အဆင့်",
+            "access_level": "သတ်မှတ်ချက်",
+            "who_access": "မည်သူဖန်တီးလဲ",
+            "owner_name": "ပိုင်ရှင်အမည်"
+        }
+    }
+}

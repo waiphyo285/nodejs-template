@@ -1,0 +1,4 @@
+# Public uploads dir
+public/assets/bootstrap/*
+public/javascript/lib/*
+public/stylesheet/lib/*

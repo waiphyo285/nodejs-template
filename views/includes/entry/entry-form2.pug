@@ -1,0 +1,8 @@
+-var recordId = data._id || data.id;
+-var method = recordId ? "put" : "post";
+
+mixin entryForm(options)
+  form.entryForm.form-horizontal.form-validate(role='form' id=options.formId method=method, action=page.entry.url novalidate)
+    input.input-sm(type='hidden', name='id', value=recordId id=options.recordId)
+    if block
+        block

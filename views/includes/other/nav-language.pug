@@ -1,0 +1,31 @@
+.nav-item.dropdown
+  a.nav-link#langDropdown(href='#' role='button' data-toggle='dropdown' aria-expanded='false')
+    i.bi.bi-translate
+    span.d-none.d-lg-inline  &nbsp; !{content.navbar.language}
+  
+  .dropdown-menu(aria-labelledby='langDropdown')
+    button.btn.dropdown-item(role='button' title="" onclick="changeLang('en_US')")
+      img(src="https://img.icons8.com/color/48/000000/usa-circular.png" width="22" height="22")
+      | &nbsp; !{content.navbar.en_US}
+    
+    button.btn.dropdown-item(role='button' title="" onclick="changeLang('my_MM')") 
+      img(src="https://img.icons8.com/color/48/000000/myanmar-circular.png" width="22" height="22")
+      | &nbsp; !{content.navbar.my_MM}
+
+// free icon sources from icons8.com
+// https://icons8.com/icons/set/flags
+
+script.
+  function changeLang(lang) {
+    modalServiceApi({
+      type: "PUT",
+      data: { locale: lang },
+      url: `/api/${v1}/edit-user/${userId}`,
+    }, function (data) {
+      if (data.code == '200') {
+        setTimeout(()=> {
+          window.location.reload();
+        }, 3000);
+      } 
+    })
+  }

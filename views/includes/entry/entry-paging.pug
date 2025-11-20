@@ -1,0 +1,65 @@
+.d-flex.justify-content-center.justify-content-md-between
+  .show-group
+    #show-text.pt-2
+      #current.d-none.d-md-inline-block
+       | Page information will be displayed here.
+
+  .page-group
+    #pageBtn
+      ul.pagination
+
+script.
+  $(document).ready(function() {
+    let pageInfo = !{JSON.stringify(options.pageInfo)}
+
+    let start = 0, end = 0, limit = pagingLimit;
+    let { url, totalCount } = pageInfo[0];
+    
+    // start = totalCount ? 1 : start
+    end =  start ? start * limit : end
+    end = end < totalCount ? end : totalCount
+
+    if (start === 0) {
+      ajaxLoadPage({ 
+        start, 
+        end, 
+        limit, 
+        totalCount, 
+        url: `${v1}/${url}` 
+      })
+    }
+
+    $('#pageBtn').Pagination({
+      page: 1,
+      pageShow: 5,
+      limit: limit, 
+      size: totalCount,
+    }, function(obj) { 
+      start = ((obj.page - 1) * limit) 
+      end = (end = start + limit - 1) < totalCount ? end : totalCount
+        
+      //- $('#pagePrev').text('Prev');
+
+      changeText({ 
+        start, 
+        end, 
+        totalCount 
+      })
+
+      ajaxLoadPage({ 
+        start, 
+        end, 
+        limit, 
+        totalCount, 
+        url: `${v1}/${url}` 
+      })
+    });
+
+    changeText({ start, end, totalCount })
+
+    function changeText({ start, end, totalCount }) {
+      //- $('#pagePrev').text('Prev');
+
+      $('#current').html(`Showing ${start} to ${end} of ${totalCount} entries`);
+    }
+  })

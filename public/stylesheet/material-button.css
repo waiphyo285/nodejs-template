@@ -1,0 +1,31 @@
+.material-primary {
+    color: var(--text-white) !important;
+    background: var(--primary);
+}
+
+.material-secondary {
+    color: var(--text-black) !important;
+    background: var(--back-white);
+}
+
+.material-button {
+    border: none;
+    position: relative;
+    display: inline-block;
+    height: 34px;
+    min-width: 34px;
+    padding: 0px 6px;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 34px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.material-button:focus,
+.material-button:active {
+    opacity: 0.8;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}

@@ -1,0 +1,38 @@
+.nav-item.dropdown
+  a.nav-link#settingDropdown(href='#' role='button' data-toggle='dropdown' aria-expanded='false')
+    i.bi.bi-sliders
+    span.d-none.d-lg-inline  &nbsp; !{content.navbar.setting}
+  
+  .dropdown-menu(aria-labelledby='settingDropdown')
+    a.dropdown-item#current-user(href='/account' data-tooltip="tooltip" data-placement="left" title="Current user") 
+      span.bi.bi-person
+        | &nbsp; !{user.username}
+        
+    .dropdown-divider
+    
+    a.dropdown-item#settings(href='/app-setting' data-tooltip="tooltip" data-placement="left" title="Setting") 
+      span.bi.bi-gear-wide-connected
+        | &nbsp; !{content.navbar.setting}
+    
+    a.dropdown-item#set-theme(href="#" role='button' data-toggle="modal", data-target="#dialogSetTheme" data-tooltip="tooltip" data-placement="left" title="New theme") 
+      span.bi.bi-palette
+        | &nbsp; !{content.navbar.theme}
+    
+    a.dropdown-item#new-template(href="#" role='button' data-toggle="modal", data-target="#dialogNewTemplate" data-tooltip="tooltip" data-placement="left" title="New template")
+      span.bi.bi-filetype-json
+        | &nbsp; !{content.navbar.template}
+    
+    .dropdown-divider
+    
+    a.dropdown-item#logout-now(href="#" role='button' data-toggle="modal", data-target="#dialogLogoutConfirm" data-tooltip="tooltip" data-placement="left" title="Logout")
+      span.bi.bi-box-arrow-right
+        | &nbsp; !{content.navbar.logout}
+        
+script.
+  $(document).ready(function() {
+    $("#dialogLogout").on('click', function() {
+      setTimeout(()=> { 
+        window.location.replace("/logout") 
+      }, 1000);
+    });
+  });

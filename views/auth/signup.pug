@@ -1,0 +1,53 @@
+extends ../includes/auth/main-auth
+
+block content
+
+  form(action="/signup" method="post" onsubmit="return validateForm();")
+    .head.mb-3
+      img.logo.border.rounded.shadow-sm(src="/images/app/logo-192x192.png", alt="logo", srcset="")
+    
+    .form-group
+      .col-sm-12.mb-3
+        h4.title !{app.NAME}
+        //- span.sub-title !{title}
+
+      .col-sm-12.mb-3
+        input(type='hidden', name='tz_offset' value=localOffset)
+        input.form-control.input-sm#phone(type="tel" name="phone" pattern="[+,0][1-9]{1}[0-9]{1,2}[0-9]{4,12}" placeholder="phone" maxlength="55" autocomplete="off" required autofocus)
+
+      .col-sm-12.mb-3
+        input.form-control.input-sm.username#username(type='text', name='username', placeholder="username" maxlength="55" autocomplete="off" required)
+
+      .col-sm-12.mb-3
+        .input-group
+          input.form-control.input-sm.password#password(type='password', name='password', placeholder="password" maxlength="55" required)
+          .input-group-append(style="cursor: pointer")
+            .input-group-text
+              i.bi.bi-eye-slash(aria-hidden='true')
+
+      .col-sm-12.mb-3
+         button.signin-button(type="submit") 
+          i.bi.bi-box-arrow-in-right
+          | &nbsp; !{buttonText}
+    
+    .link.text-center
+      a(href="/login") If you already have account? 
+        span Sign In
+  
+  script.
+    const phoneInput = document.querySelector("#phone");
+    const phoneIntl = window.intlTelInput(phoneInput, {
+      onlyCountries: ["mm", "th", "sg", "my", "cn"],
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"
+    });
+
+    function validateForm() {
+      if (phoneIntl.isValidNumber()) {
+        document.getElementById("phone").value = phoneIntl.getNumber();
+      }
+      else {
+        errorMessage.innerText = `Invalid E.164 format: ${phoneIntl.getNumber()}`;;
+        errorMessage.style.display = "block";
+        return false;
+      }
+    }

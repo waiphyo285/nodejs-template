@@ -1,0 +1,84 @@
+{
+    "en_US": {
+        "tab_info": "Information",
+        "tab_profile": "Profile",
+        "tab_setting": "Setting",
+        "tab_security": "Security",
+        "tab_permission": "Permission",
+
+        "tab_logging": "Logging",
+        "tab_timeline": "Timeline",
+        "tab_analytic": "Analytic",
+
+        "tab_store": "Stores",
+        "tab_product": "Product",
+        "tab_variant": "Variant",
+        "tab_media": "Media",
+        "tab_pricing": "Pricing",
+        "tab_attribute": "Attribute",
+        "tab_invoice": "Invoices",
+
+        "tab_howtouse": "Hot to use",
+        "tab_privacy": "Privacy & Policy",
+
+        "status": "Status",
+        "actions": "Actions",
+        "expired_at": "Expired At",
+        "created_at": "Created At",
+        "updated_at": "Updated At",
+
+        "cancel": "Cancel",
+        "delete": "Delete",
+
+        "add": "Add",
+        "save": "Save",
+
+        "close": "Close",
+        "reset": "Reset",
+        "filter": "Filter",
+        "search": "Search",
+        "proceed": "Proceed",
+        "update": "Update"
+    },
+    "my_MM": {
+        "tab_info": "Information",
+        "tab_profile": "ပရိုဖိုင်",
+        "tab_setting": "ဆက်တင်",
+        "tab_security": "လုံခြုံရေး",
+        "tab_permission": "ခွင့်ပြုချက်",
+
+        "tab_logging": "Logging",
+        "tab_timeline": "Timeline",
+        "tab_analytic": "Analytic",
+
+        "tab_store": "စတိုင်းဆိုင်များ",
+        "tab_product": "ထုတ်ကုန်",
+        "tab_variant": "ထုတ်ကုန်ခွဲ",
+        "tab_media": "မီဒီယာ",
+        "tab_pricing": "စျေးနှုန်း",
+        "tab_attribute": "Attribute",
+        "tab_invoice": "ပြေစာများ",
+
+        "tab_howtouse": "Hot to use",
+        "tab_privacy": "Privacy & Policy",
+
+        "status": "မှတ်ချက်",
+        "expired_at": "သက်တမ်းရက်",
+        "created_at": "ဖန်တီးရက်စွဲ",
+        "updated_at": "ပြင်ဆင်ရက်စွဲ",
+        "actions": "လုပ်ဆောင်ချက်များ",
+
+        "cancel": "ပယ်ဖျက်",
+        "delete": "ဖျက်ပါ",
+
+        "add": "ထည့်ပါ",
+        "save": "သိမ်းဆည်း",
+
+        "close": "ပိတ်ပါ",
+        "reset": "ပြန်ထား",
+        "filter": "စစ်ထုတ်",
+        "search": "ရှာဖွေ",
+        "proceed": "ရှေ့ဆက်",
+        "update": "ပြင်ဆင်"
+    }
+}

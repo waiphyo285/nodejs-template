@@ -1,0 +1,37 @@
+{
+    "role": [
+        {
+            "_id": "owner",
+            "display": "Owner",
+            "who_access": ["developer", "owner"]
+        },
+        {
+            "_id": "manager",
+            "display": "Manager",
+            "who_access": ["developer", "owner", "manager"]
+        },
+        {
+            "_id": "staff",
+            "display": "Staff",
+            "who_access": ["developer", "owner", "manager", "staff"]
+        }
+    ],
+    "planList": [
+        {
+            "_id": "starter",
+            "display": "Starter (13,900 K/mo)"
+        },
+        {
+            "_id": "regular",
+            "display": "Regular (23,900 K/mo)"
+        },
+        {
+            "_id": "plus",
+            "display": "Plus (88,900 K/mo)"
+        },
+        {
+            "_id": "enterprise",
+            "display": "Enterprise (Nego)"
+        }
+    ]
+}

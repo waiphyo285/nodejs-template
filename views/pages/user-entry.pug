@@ -1,0 +1,128 @@
+extends ../includes/layout-main
+block content
+  -var isEdited = data._id || data.id;
+  -var isLinkedAccount = data.account_id || "";
+  -var isDeveloper = data.role == "developer" ? true : false;
+
+  -var isCurrentOwner = user.role == "owner" && user.role == data.role;
+
+  main.border.mx-3.mb-5.p-3(role='main')
+    include ./../includes/entry/entry-header
+    include ./../includes/modal/modal-user-link
+    include ./../includes/modal/modal-user-unlink
+
+    ul#myTab.nav.nav-tabs.mb-3(role='tablist')
+      li.nav-item(role='presentation')
+        button#information-tab.nav-link.active(data-toggle='tab' data-target='#information' type='button' role='tab' aria-controls='information' aria-selected='true')
+          i.bi.bi-info-circle
+          span.d-none.d-lg-block !{content.common.tab_info}
+          
+    include ./../includes/entry/entry-form
+      block inputs
+        #myTabContent.tab-content
+          #information.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='information-tab')
+            -var isDisplayed = isEdited && !isDeveloper && !isCurrentOwner
+            if (isDisplayed)
+              .d-flex.justify-content-end
+                .btn-group.btn-group-md
+                  if isLinkedAccount
+                    button.btn.btn-warning(type="button" role='button' data-toggle="modal", data-target="#dialogUnlinkAccount")
+                      i.bi.bi-person-dash-fill
+                      |   !{content.modal.unlink_person}
+                  else
+                    button.btn.material-primary(type="button" role='button' data-toggle="modal", data-target="#dialogLinkAccount")
+                      i.bi.bi-person-plus
+                      |   !{content.modal.link_person}
+
+              hr
+
+            div.form-group.row(class=isDeveloper ? "d-none" : "")
+              div.col-md-6.mb-3
+                label.control-label(for='role') !{content.access_role} *
+                select.form-control.input-sm.custom-select.all-select2-picker#roleId(name='role' value=data.role data-value=data.role, data-live-search="true", data-size="8" required disabled=isDeveloper)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+
+              div.col-md-6.mb-3
+                label.control-label(for='level') !{content.access_level} *
+                select.form-control.input-sm.custom-select.all-select2-picker#levelId(name='level_id' value=data.level_id data-value=data.level_id, data-live-search="true", data-size="8" required disabled=isDeveloper)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+
+            hr(class=isDeveloper ? "d-none" : "")
+        
+            div.form-group.row       
+              div.col-md-6.mb-3
+                label.control-label(for='username') !{content.username} *
+                input.form-control.input-sm.username#username(type='text', name='username', value=data.username, maxlength="55" autocomplete="off" required autofocus)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+
+              div.col-md-6.mb-3
+                label.control-label(for='password') !{content.password} *
+                div.input-group
+                  input.form-control.input-sm.password#password(type='password', name='password', role='password' value="" data-toggle="password-validator" data-match-pass=".conf-pass" data-target=".pwd-errors" required)
+                  div.input-group-append
+                    div.input-group-text.rounded-right
+                      i.bi.bi-eye-slash(aria-hidden='true')
+                  span.invalid-feedback
+                    | Please fill out this field. It is required to proceed.
+
+            hr
+
+            div.form-group.row
+              div.col-md-6.mb-3
+                label.control-label(for='phone') !{content.phone} *
+                input.form-control.input-sm#phone(type='tel', name='phone', max='12' value=data.phone  pattern="[+,0][1-9]{1}[0-9]{1,2}[0-9]{4,12}" autocomplete="off" required)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+                  
+              div.col-md-6.mb-3
+                include ./../includes/common/input-status
+
+        include ./../includes/entry/entry-btn
+
+    form#postSuccessForm(method='GET', action=page.list.url)
+
+  script.
+    $(document).ready(function() {
+      const editMode = $("input[name='id']").val();
+
+      ajaxLoadOption({
+        type: "GET",
+        url:"/config-roles",
+        selectId: "#roleId",
+        showKey: "display",
+        filterObj: {},
+      });
+
+      $('#roleId').on('change', function() {
+        const role_id = $(this).val() ||         // get value [new entry]
+                        $(this).data('value');   // get value [edit entry]
+        role_id && ajaxLoadOption({
+          type: "GET",
+          url:"/user-role",
+          showKey: "level",
+          selectId: "#levelId",
+          filterObj: { status: 1, role: role_id },
+        });
+      });
+
+      if (editMode && typeof editMode === "string") {
+        $('#roleId').trigger('change');
+      }
+
+      $(".input-group-append").on('click', function(event) {
+        event.preventDefault();
+        if($("#password").attr("type") == "password"){
+          $("#password").prop("type", "text");
+          $('.input-group-text i').addClass( "bi-eye" );
+          $('.input-group-text i').removeClass( "bi-eye-slash" );
+        }
+        else if($("#password").attr("type") == "text"){
+          $("#password").prop("type", "password");
+          $('.input-group-text i').addClass( "bi-eye-slash" );
+          $('.input-group-text i').removeClass( "bi-eye" );
+        }
+      });
+    });

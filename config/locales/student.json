@@ -1,0 +1,26 @@
+{
+    "en_US": {
+        "list": {
+            "name": "Name",
+            "age": "Age",
+            "grade": "Grade"
+        },
+        "entry": {
+            "name": "Name",
+            "age": "Age",
+            "grade": "Grade"
+        }
+    },
+    "my_MM": {
+        "list": {
+            "name": "အမည်",
+            "age": "အသက်",
+            "grade": "အတန်း"
+        },
+        "entry": {
+            "name": "အမည်",
+            "age": "အသက်",
+            "grade": "အတန်း"
+        }
+    }
+}

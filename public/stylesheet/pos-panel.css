@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+@font-face {
+    font-family: 'Questrial Sagar', 'Questrial', 'Ubuntu Mono', monospace;
+    src: url('/fonts/Sagar/Release/MyanmarSagar.ttf') format('truetype');
+}
+
+/* Setup font */
+
+body {
+    font-size: 14px;
+    font-family: 'Questrial Sagar', 'Questrial';
+}
+
+/* Scrollbar  */
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px var(--back-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--back-gray);
+}
+
+/* Text selection */
+
+::selection {
+    color: var(--text-white);
+    background: var(--primary);
+}
+
+::-moz-selection {
+    color: var(--text-white);
+    background: var(--primary);
+}
+
+/* Input focus */
+
+input:focus,
+.form-control:focus {
+    outline: none !important;
+    border-color: var(--primary);
+    box-shadow: 0 0 1.2px var(--primary);
+}
+
+textarea:focus {
+    outline: none !important;
+    border-color: var(--primary);
+    box-shadow: 0 0 1.2px var(--primary);
+}
+
+/* Button focus */
+
+.btn {
+    border: none !important;
+}
+
+.btn:focus,
+.btn:active {
+    opacity: 0.8;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+button.close {
+    width: 26px;
+    height: 26px;
+    padding: 0 !important;
+    background: var(--back-gray);
+    border-radius: 50%;
+}
+
+button.close:focus,
+button.close:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Bootstrap class override here */
+
+nav.navbar {
+    padding: 0.26rem 1rem;
+    background: var(--primary);
+}
+
+.nav-item.dropdown>.dropdown-menu {
+    top: 44px;
+    left: -60px;
+}
+
+.nav-item.dropdown>.dropdown-menu>a {
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 3px auto;
+}
+
+.nav-item.dropdown>.dropdown-menu>a:hover,
+.nav-item.dropdown>.dropdown-menu>a:focus {
+    color: var(--primary);
+    background-color: var(--back-white);
+}
+
+.nav-item.dropdown>.dropdown-menu>.dropdown-divider {
+    background-color: var(--back-gray);
+}
+
+/* Dialog modal */
+
+.modal-backdrop {
+    background-color: var(--back-white);
+}
+
+.custom-modal-lg>.modal-content {
+    min-height: 500px !important;
+    max-height: 500px !important;
+    overflow: hidden !important;
+}
+
+.custom-modal-lg>.modal-content>.modal-body {
+    overflow-y: scroll !important;
+}
+
+.custom-fullview-lg {
+    min-width: 100% !important;
+    max-width: 100% !important;
+}
+
+.custom-fullview-lg>.modal-content {
+    min-height: 88vh !important;
+    max-height: 88vh !important;
+    overflow: hidden !important;
+}
+
+.custom-fullview-lg>.modal-content>.modal-body {
+    overflow-y: scroll !important;
+}
+
+/* Shopping cart list style */
+
+.shopping-cart .param {
+    line-height: 1.3;
+    margin-bottom: 6px;
+}
+
+.shopping-cart .param dt {
+    margin: 0;
+    margin-right: 6px;
+    font-weight: 600;
+}
+
+.shopping-cart .param dd {
+    margin: 0;
+    vertical-align: baseline;
+}
+
+.shopping-cart .param-inline dt {
+    display: inline-block;
+}
+
+.shopping-cart .param-inline dd {
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.shopping-cart .price {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* Custom utility classes */
+
+.o-nav-items>.nav-item {
+    line-height: 1.3;
+    border-radius: 0.2rem;
+}
+
+.o-nav-items>.nav-item>a {
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+/* Select 2 */
+
+.select2-container .select2-selection--single {
+    height: 36px !important;
+    border: 1px solid #ced4da;
+}
+
+.select2-selection__arrow {
+    height: 36px !important;
+}
+
+.select2-selection__rendered {
+    line-height: 36px !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    color: var(--text-white);
+    background: var(--primary);
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    text-decoration: none;
+    color: var(--text-white);
+    background: var(--primary);
+}
+
+/* Float content */
+
+.float-content {
+    position: fixed;
+    right: 0;
+    bottom: 3.6rem;
+}
+
+.float-phone {
+    font-size: 30px;
+    text-decoration: none;
+    border-radius: 20px 0 0 20px;
+    background: rgb(255, 244, 200);
+}
+
+.bounce-icon {
+    animation: bounceIcon 1s ease infinite;
+}
+
+@keyframes bounceIcon {
+    0%,50%{
+        color: var(--primary);
+    }
+    51%,100% {
+        color: var(--secondary);
+    }
+}
+
+/* Form validation */
+
+.form-control.is-valid,
+.custom-select.is-valid,
+.was-validated .form-control:valid,
+.was-validated .custom-select:valid {
+    border-color: var(--back-gray) !important;
+}
+
+.form-control.is-invalid,
+.custom-select.is-invalid,
+.was-validated .form-control:invalid,
+.was-validated .custom-select:invalid {
+    border-color: var(--back-gray) !important;
+}
+
+.valid-feedback {
+    font-size: 14px;
+    color: #30dd30;
+    margin-top: 0.25rem;
+}
+
+.invalid-feedback {
+    font-size: 14px;
+    color: #dd3030;
+    margin-top: 0.25rem;
+}

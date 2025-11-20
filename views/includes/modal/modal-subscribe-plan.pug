@@ -1,0 +1,106 @@
+div.modal.fade#dialogSubscribePlan(tabindex='-1', role='dialog', aria-labelledby='dialogSubscribePlan')
+  div.modal-dialog.modal-dialog-centered.modal-lg.custom-modal-lg(role='document')
+    div.modal-content
+      div.modal-header
+        h5.modal-title !{content.modal.link_person}
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+      
+      div.modal-body
+        div.px-4
+          -var recordId = data.plan_owner_id;
+          -var ownerId = data._id || data.id;
+     
+
+          form#subscribePlanForm.form-horizontal.form-validate(method=recordId ? 'PUT' : 'POST', action='/subscription-owner' novalidate)
+            input.input-sm#recordId2(type='hidden', name='id', value=recordId)
+            input.input-sm#recordId3(type='hidden', name='owner_id', value=ownerId)
+
+            div.form-group.row
+              div.col-sm-12.mb-3
+                label.control-label(for='plan_id') !{content.subscription} *
+                select.form-control.input-sm.custom-select.all-select2-picker#planId(name='plan_id' value=data.plan_id data-value=data.plan_id, data-live-search="true", data-size="8" required)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+
+              div.col-sm-12.mb-3
+                label.control-label(for='description') !{content.description} *
+                textarea.form-control.input-sm#description(name='description', rows='3')=data.plan_description
+
+              if recordId
+                div.col-sm-6.mb-3
+                  label.control-label(for='started_at') !{content.started_at} *
+                  div=data.started_at
+                div.col-sm-6.mb-3
+                  label.control-label(for='expired_at') !{content.expired_at} *
+                  div=data.expired_at
+
+              div.col-md-12.mb-3
+                -var initStatus = data.plan_status == undefined ? true : false;
+                label.control-label.d-block(for='status') !{content.common.status} 
+                .btn-group.btn-group-toggle(data-toggle='buttons')
+                  label.btn.btn-outline-success.btn-toggle(class=`${initStatus || data.plan_status == true ? "active" : ""}`)
+                    input(type='radio' name=`status` value="1" autocomplete='off' checked=(initStatus || data.plan_status == true))
+                    |  Active
+                    
+                  label.btn.btn-outline-secondary.btn-toggle(class=`${data.plan_status == false ? "active" : ""}`)
+                    input(type='radio' name=`status` value="0" autocomplete='off' checked=(data.plan_status == false))
+                    |  Inactive
+      
+      div.modal-footer.justify-content-md-center
+        button.btn.material-button.material-secondary#dialogCancel(type='button', data-dismiss='modal')
+          |  !{content.common.close}
+        
+        button.btn.material-button.material-primary#dialogLinkBtn(type='button' role='button')
+          i.bi.bi-save
+          |  !{content.common.save}
+
+script.
+  $(document).ready(function() {
+    ajaxLoadOption({
+      type: "GET",
+      url:"/subscription-plans",
+      showKey: "plan_type",
+      selectId: "#planId",
+      filterObj: { },
+      isSelected: true,
+    });
+
+    $('#dialogLinkBtn').on('click', function() {
+      var form = $('#subscribePlanForm');
+      var isValidForm = form[0].checkValidity();
+
+      if (!isValidForm) {
+        form.addClass('was-validated')
+        return
+      }
+
+      form.submit();
+    })
+
+    $('#subscribePlanForm').submit(function (e) {
+      e.preventDefault()
+
+      var _this = this
+  
+      const data = {
+        url: $(_this).attr('action'),
+        type: $(_this).attr('method'),
+        data: $(_this).serialize(),
+      }
+
+      const apiUrl = `/api/${v1}${data.url}`
+      const appendUrl = apiUrl + '/!{data.plan_owner_id}';
+
+      commonServiceApi({
+        type: data.type,
+        data: data.data,
+        url: appendUrl,
+      }, function (data) {
+        if (data.code == '200') {
+          $('#dialogSubscribePlan').modal('toggle');
+          setTimeout(() => location.reload(), 1500) 
+        }
+      })      
+    })
+  });
