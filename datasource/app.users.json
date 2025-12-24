@@ -1,0 +1,53 @@
+[
+    {
+        "_id": {
+            "$oid": "691dce02c57e320e7bb713b6"
+        },
+        "level_id": null,
+        "account_id": null,
+        "user_type": "developer",
+        "theme": "default",
+        "locale": "en_US",
+        "tz_offset": "-420",
+        "latmat": "",
+        "csrf": "",
+        "status": true,
+        "phone": "+9592213456",
+        "username": "newadmin",
+        "password": "$2b$10$qyhrFI77RlVDh1RszVjNKOj0uHNs8YSjc/ZAttMgI4CKqF3uIDQKG",
+        "role": "developer",
+        "created_at": {
+            "$date": "2025-11-19T14:02:42.986Z"
+        },
+        "updated_at": {
+            "$date": "2025-11-22T15:36:56.264Z"
+        },
+        "__v": 0
+    },
+    {
+        "_id": {
+            "$oid": "691f3238e6b0b3dc3fa5b039"
+        },
+        "level_id": {
+            "$oid": "691f316fe6b0b3dc3fa5b019"
+        },
+        "user_type": "developer",
+        "theme": "default",
+        "locale": "en_US",
+        "tz_offset": "",
+        "latmat": "",
+        "csrf": "",
+        "status": true,
+        "role": "owner",
+        "username": "minmin123",
+        "password": "$2b$10$Oa7sYVBZ7806gL8ddARxL.Jk8KZ3g0BX1LrQOVC6UEg6cuAM4D35u",
+        "phone": "0922134567",
+        "created_at": {
+            "$date": "2025-11-20T15:22:32.728Z"
+        },
+        "updated_at": {
+            "$date": "2025-11-23T05:26:16.539Z"
+        },
+        "__v": 0
+    }
+]

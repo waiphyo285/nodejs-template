@@ -48,8 +48,8 @@ function dataTableDateTimeRenderer() {
 function dataTableTypeRenderer() {
     return function (d, type, row) {
         return d !== ''
-            ? `<span class="badge badge-secondary" style="min-width: 66px; font-size:12px;">${d.toString()}</span>`
-            : `<span class="badge badge-secondary" style="min-width: 66px; font-size:12px;">undefined</span>`
+            ? `<span class="badge badge-light" style="min-width: 66px; font-size:12px;">${d.toString()}</span>`
+            : `<span class="badge badge-light" style="min-width: 66px; font-size:12px;">undefined</span>`
     }
 }
 

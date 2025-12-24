@@ -1,0 +1,43 @@
+extends ../includes/layout-main
+block content
+  -var isEdited = data.id;
+
+  main.border.rounded.mx-3.mb-5.p-3(role='main')
+    include ./../includes/entry/entry-header
+
+    ul#myTab.nav.nav-tabs.mb-3(role='tablist')
+      li.nav-item(role='presentation')
+        button#information-tab.nav-link.active(data-toggle='tab' data-target='#information' type='button' role='tab' aria-controls='information' aria-selected='true')
+          i.bi.bi-info-circle
+          span.d-none.d-lg-block !{content.common.tab_info}
+          
+    include ./../includes/entry/entry-form
+      block inputs
+        #myTabContent.tab-content
+          #information.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='information-tab')
+            div.form-group.row       
+              div.col-md-6.mb-3
+                label.control-label(for='name') !{content.name} *
+                input.form-control.input-sm#name(type='text', name='name', value=data.name, maxlength="100" autocomplete="off" required autofocus)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+
+              div.col-md-6.mb-3
+                label.control-label(for='age') !{content.age}
+                input.form-control.input-sm#age(type='number', name='age', value=data.age, min="18" max="100" autocomplete="off")
+                span.invalid-feedback
+                  | Please enter a valid age.
+
+            div.form-group.row
+              div.col-md-6.mb-3
+                label.control-label(for='degree') !{content.degree}
+                input.form-control.input-sm#degree(type='text', name='degree', value=data.degree, maxlength="100" autocomplete="off")
+                span.invalid-feedback
+                  | Please enter a valid degree.
+                  
+              div.col-md-6.mb-3
+                include ./../includes/common/input-status
+
+        include ./../includes/entry/entry-btn
+
+    form#postSuccessForm(method='GET', action=page.list.url)

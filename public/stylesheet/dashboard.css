@@ -400,10 +400,12 @@ nav.navbar {
 }
 
 @keyframes bounceIcon {
-    0%,50%{
+    0%,
+    50% {
         color: var(--primary);
     }
-    51%,100% {
+    51%,
+    100% {
         color: var(--secondary);
     }
 }
@@ -517,7 +519,6 @@ label.radio input:checked + span {
     border-color: var(--primary);
 }
 
-
 /* Timeline */
 
 ul.timeline {
@@ -553,7 +554,6 @@ ul.timeline > li:before {
     height: 18px;
     z-index: 400;
 }
-
 
 /* Image container */
 

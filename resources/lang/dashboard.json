@@ -1,0 +1,20 @@
+{
+    "en_US": {
+        "welcome": "Welcome back 👋",
+        "quick_link": "Quick links",
+
+        "total_song": "Total Songs",
+        "total_artist": "Total Artists",
+        "total_band": "Total Bands",
+        "total_request": "Song Requests"
+    },
+    "my_MM": {
+        "welcome": "ကြိုဆိုပါ၏ 👋",
+        "quick_link": "ဆက်သွယ်ချက်များ",
+
+        "total_song": "သီချင်းများ",
+        "total_artist": "အဆိုတော်များ",
+        "total_band": "အဖွဲ့များ",
+        "total_request": "တောင်းဆိုမှုများ"
+    }
+}

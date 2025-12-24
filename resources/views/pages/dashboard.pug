@@ -1,0 +1,197 @@
+extends ../includes/layout-main
+block content
+  -var isAccess = false;
+
+  each p in program 
+    if p.menuid == "dashboard"
+      -isAccess = p.access
+  
+  if isAccess
+    main.border.rounded.mx-3.mb-5.p-3(role='main')
+     
+      if program && program.length > 0
+        .quick-links
+          .d-flex.my-2
+            h5.mr-auto
+            span.show-date-time Jan 01 00:00 AM
+     
+          #accordion.border.mb-3
+            #headingOne.bg-light.p-3
+              h5.mb-0(style='font-size: 16px; cursor: pointer;')
+                span( data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                  i.bi.bi-chevron-down
+                  |  !{content.quick_link}
+
+            #collapseOne.collapse.fade.in.show(aria-labelledby='headingOne' data-parent='#accordion')
+              .d-flex.m-3
+                ul.nav.nav-pills
+                  each programObj in program
+                    if programObj.access == true
+                      -var subMenuLength = programObj.submenu.length;
+                      if !(subMenuLength > 0 && programObj.icon != 'bi bi-list')
+                        li.nav-item.shadow-sm.m-1(data-tooltip="tooltip" data-placement="bottom" title=programObj.title)
+                          a.btn.btn-light.text-dark(href=programObj.url)
+                            span(class=programObj.icon)
+                            span.d-none  !{programObj.title}
+                      else
+                        each subMenuObj in programObj.submenu
+                          -var isAccess = (subMenuObj.access == true) ? true : false;
+                          if (isAccess && subMenuObj.icon != 'bi bi-list')
+                            li.nav-item.shadow-sm.m-1(data-tooltip="tooltip" data-placement="bottom" title=subMenuObj.title)
+                              a.btn.btn-light.text-dark(href=subMenuObj.url)
+                                span(class=subMenuObj.icon)
+                                span.d-none  !{subMenuObj.title}
+ 
+      hr
+      
+      .quick-check
+        .row.mb-4
+          .col-xl-3.col-sm-4.col-12.mt-2
+            .border
+              .card-content
+                .card-body
+                  .media.d-flex
+                    .align-self-center(style="font-size: 26px")
+                      i.bi.bi-music-note.text-success.float-left(style='font-size: 50px')
+                    .media-body.text-right
+                      h3.count-to.text-secondary !{data.card.total_song}
+                      span !{content.total_song}
+
+          .col-xl-3.col-sm-4.col-12.mt-2
+            .border
+              .card-content
+                .card-body
+                  .media.d-flex
+                    .align-self-center(style="font-size: 26px")
+                      i.bi.bi-person-badge.text-primary.float-left(style='font-size: 50px')
+                    .media-body.text-right
+                      h3.count-to.text-secondary !{data.card.total_artist}
+                      span !{content.total_artist}
+
+          .col-xl-3.col-sm-4.col-12.mt-2
+            .border
+              .card-content
+                .card-body
+                  .media.d-flex
+                    .align-self-center(style="font-size: 26px")
+                      i.bi.bi-people.text-info.float-left(style='font-size: 50px')
+                    .media-body.text-right
+                      h3.count-to.text-secondary !{data.card.total_band}
+                      span !{content.total_band}
+
+          .col-xl-3.col-sm-4.col-12.mt-2
+            .border
+              .card-content
+                .card-body
+                  .media.d-flex
+                    .align-self-center(style="font-size: 26px")
+                      i.bi.bi-chat-dots.text-warning.float-left(style='font-size: 50px')
+                    .media-body.text-right
+                      h3.count-to.text-secondary !{data.card.total_request}
+                      span !{content.total_request}
+
+     
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title
+          //-     .panel-content.text-center
+          //-       canvas#teamChart.chart(height='380')
+          //-     .panel-footer.text-center
+          //-       p.pt-3 A simple Team Chart with basic settings
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title
+          //-     .panel-content.text-center
+          //-       canvas#saleChart.chart(height='380')
+          //-     .panel-footer.text-center 
+          //-       p.pt-3 A sample Sale Chart with basic settings
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title 
+          //-     .panel-content.text-center
+          //-       canvas#lineChart.chart(height='380')
+          //-     .panel-footer.text-center 
+          //-       p.pt-3 A sample Line Chart with basic settings
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title
+          //-     .panel-content.text-center
+          //-       canvas#barChart.chart(height='380')
+          //-     .panel-footer.text-center 
+          //-       p.pt-3 A sample Bar Chart with basic settings
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title
+          //-     .panel-content.text-center
+          //-       canvas#radarChart.chart(height='380')
+          //-     .panel-footer.text-center 
+          //-       p.pt-3 A sample Radar Chart with basic settings
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title 
+          //-     .panel-content.text-center
+          //-       canvas#pieChart.chart(height='380')
+          //-     .panel-footer.text-center 
+          //-       p.pt-3 A sample Pie Chart with basic settings
+
+          //- .col-md-4.my-2
+          //-   .panel.panel-default
+          //-     .panel-heading
+          //-       h4.panel-title 
+          //-     .panel-content.text-center
+          //-       canvas#doughutChart.chart(height='380')
+          //-     .panel-footer.text-center 
+          //-       p.pt-3 A sample Doughut Chart with basic settings
+
+  else
+    link(href='/assets/404/styles.css' rel='stylesheet')
+    #notfound
+      .notfound
+        .f0f
+          lottie-player.ltp(src='https://assets1.lottiefiles.com/packages/lf20_slGFhN.json' style='width: 250px; height: 250px' speed='1' autoplay='' loop='')
+          p
+            | Unauthorized: indicates that the request has not been applied because 
+            | it lacks valid authentication credentials for the target resource.
+            
+  script(src='https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js')
+  script(src='../javascript/lib/chart-js/chart.bundle.min.js')
+  script(src='../javascript/dashboard.js')
+
+  script.
+    $(document).ready(function() {
+
+      var barchartData = !{JSON.stringify(data.barchart)};
+
+      drawDashboardChart(barchartData) 
+
+      $('.count-to').each(function () {
+        const $this = $(this);
+        jQuery({ Counter: 0 })
+          .animate({ Counter: $this.text() }, {
+            duration: 1000,
+            easing: 'swing',
+            step: function () {
+              $this.text(Math.ceil(this.Counter));
+            }
+        });
+      });
+
+      // initial set value
+      $(".show-date-time").text(
+        moment(new Date()).format('MMM DD, YYYY') 
+      );
+    });
+
+    

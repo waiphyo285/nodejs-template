@@ -1,0 +1,156 @@
+extends ../includes/layout-main
+block content
+  main.border.rounded.mx-3.mb-5.p-3(role='main')
+    include ./../includes/entry/entry-header
+
+    ul#myTab.nav.nav-tabs.mb-3(role='tablist')
+      li.nav-item(role='information')
+        button#information-tab.nav-link.active(data-toggle='tab' data-target='#information' type='button' role='tab' aria-controls='information' aria-selected='true')
+          i.bi.bi-info-circle
+          span.d-none.d-lg-block !{content.common.tab_info}
+
+      li.nav-item.mx-1(role='permission')
+        button#permission-tab.nav-link(data-toggle='tab' data-target='#permission' type='button' role='tab' aria-controls='permission' aria-selected='true')
+          i.bi.bi-list-check
+          span.d-none.d-lg-block !{content.common.tab_permission}
+          
+    include ./../includes/entry/entry-form
+      block inputs
+
+        #myTabContent.tab-content
+          #information.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='information-tab')
+
+            div.alert.alert-warning.alert-dismissible(role='alert')
+              b Notes:
+              span 
+                | You have to choose <i>ACCESS ROLE</i> that is regarding to system. Please carefully consider to define access level based on your chosen role. That may cause
+                | both frontend user interface and backend authorized API requests.
+              button.close(type='button', data-hide='alert', aria-label='Close')
+                span(aria-hidden='true') &times;
+
+            div.form-group.row
+              div.col-md-6.mb-3
+                label.control-label(for='role') !{content.access_role} *
+                select.form-control.input-sm.custom-select.all-select2-picker#roleId(name='role' value=data.role data-value=data.role, data-live-search="true", data-size="8" required)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+
+              div.col-md-6.mb-3
+                label.control-label(for='level') !{content.access_level} *
+                input.form-control.input-sm#level(type='text', name='level', value=data.level, maxlength="55" autocomplete="off" required)
+                span.invalid-feedback
+                  | Please fill out this field. It is required to proceed.
+                             
+            hr
+
+            div.form-group.row
+              //- div.col-md-6.mb-3
+              //-   label.control-label(for='owner_id') !{content.owner_name} 
+              //-   select.form-control.input-sm.custom-select.all-select2-picker#ownerId(name='owner_id' value=data.owner_id data-value=data.owner_id, data-live-search="true", data-size="8" )
+ 
+              div.col-md-6.mb-3
+                include ./../includes/common/input-status
+ 
+          #permission.tab-pane.fade.show(role='tabpanel' aria-labelledby='permission-tab')
+            #accordion.border
+              #headingOne.bg-light.p-3
+                h5.mb-0(style='font-size: 16px; cursor: pointer;')
+                  span( data-toggle='collapse' data-target='#collapseOne' aria-expanded='true' aria-controls='collapseOne')
+                    i.bi.bi-chevron-down
+                    |  Access program
+
+              #collapseOne.collapse.ml-3.mt-3.fade.in.show(aria-labelledby='headingOne' data-parent='#accordion')
+                -var hasProgram = data.program && data.program.length > 0;
+
+                if (hasProgram)
+                  each menu, menuIdx in data.program 
+                    -var isDisplayed = !menu.display || menu.display === user.role;
+                    -var hasNextMenu = isDisplayed && (menuIdx != data.program.length - 1);
+
+                    div.form-group.row.mb-3
+                      if (isDisplayed)
+                        div.d-none
+                          input.input-sm(type='text', name=`program[${menuIdx}][menuid]`, value=menu.menuid)
+                        
+                        div.col-4.mb-3
+                          h6
+                            span.mr-2.d-none.d-md-inline(class=menu.icon) 
+                            span !{menu.title}
+  
+                        div.col-8.mb-3
+                          .btn-group.btn-group-md.btn-group-toggle(data-toggle='buttons')
+                            label.btn.btn-outline-success.btn-toggle(class=`${menu.access == true ? "active" : ""}`)
+                              input(type='checkbox' name=`program[${menuIdx}][access]` value="1" checked=(menu.access == true))
+                              span.bi.bi-check2-square
+                              span.d-none.d-lg-inline  Access
+  
+                        -var hasSubMenu = menu.submenu && menu.submenu.length > 0;
+
+                        if (hasSubMenu)
+                          each submenu, submenuIdx in menu.submenu
+                            -var isDisplayed = !submenu.display || submenu.display === user.role;
+
+                            if (isDisplayed)
+                              div.d-none
+                                input.input-sm(type='text', name=`program[${menuIdx}][submenu][${submenuIdx}][menuid]` value=submenu.menuid)
+
+                              div.col-4.mb-3
+                                h6
+                                  span.mr-2.d-none.d-md-inline(class=submenu.icon) 
+                                  span !{submenu.title}
+
+                              div.col-8.mb-3
+                                .btn-group.btn-group-md.btn-group-toggle(data-toggle='buttons')
+                                  label.btn.btn-outline-success.btn-toggle(class=`${submenu.access == true ? "active" : ""}`)
+                                    input(type='checkbox' name=`program[${menuIdx}][submenu][${submenuIdx}][access]` value="1" autocomplete='off' checked=(submenu.access == true))
+                                    span.bi.bi-check2-square
+                                    span.d-none.d-lg-inline  Access
+
+                                  label.btn.btn-outline-primary.btn-toggle(class=`${submenu.read == true ? "active" : ""}`)
+                                    input(type='checkbox' name=`program[${menuIdx}][submenu][${submenuIdx}][read]` value="1" autocomplete='off' checked=(submenu.read == true))
+                                    span.bi-plus
+                                    span.d-none.d-lg-inline  New
+
+                                  label.btn.btn-outline-warning.btn-toggle(class=`${submenu.edit == true ? "active" : ""}`)
+                                    input(type='checkbox' name=`program[${menuIdx}][submenu][${submenuIdx}][edit]` value="1" autocomplete='off' checked=(submenu.edit == true))
+                                    span.bi-pencil
+                                    span.d-none.d-lg-inline  Edit
+
+                                  label.btn.btn-outline-danger.btn-toggle(class=`${submenu.delete == true ? "active" : ""}`)
+                                    input(type='checkbox' name=`program[${menuIdx}][submenu][${submenuIdx}][delete]` value="1" autocomplete='off' checked=(submenu.delete == true))
+                                    span.bi-trash3
+                                    span.d-none.d-lg-inline  Remove
+                        else
+                          .col-12 
+                            span *** Currently this menu does not have sub menu! Please keep in touch with us.
+                      
+                    if (hasNextMenu)
+                      hr 
+
+        include ./../includes/entry/entry-btn
+
+    form#postSuccessForm(method='GET', action=page.list.url)
+
+  script.
+    $(document).ready(function() {
+      if (userType !== DEVELOPER) {
+        $('#ownerId').attr({ required: true })
+      }
+
+      ajaxLoadOption({
+        type: "GET",
+        url:"/config-roles",
+        selectId: "#roleId",
+        showKey: "display",
+        filterObj: {},
+      });
+
+      ajaxLoadOption({
+        type: "GET",
+        url:"/owner",
+        showKey: "name",
+        selectId: "#ownerId",
+        filterObj: { status: 1 },
+        isSelected: true,
+      });
+    });

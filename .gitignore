@@ -5,6 +5,7 @@
 
 # Node artifact files
 node_modules/
+npm-cache/
 package-lock.json
 
 # Environments
@@ -12,7 +13,7 @@ package-lock.json
 
 # Public uploads dir
 public/uploads/*
-# public/assets/bootstrap/*
+# public/bootstrap/*
 # public/javascript/lib/*
 # public/stylesheet/lib/*
 

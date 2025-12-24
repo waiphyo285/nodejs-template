@@ -1,0 +1,87 @@
+[
+    {
+        "_id": {
+            "$oid": "691f316fe6b0b3dc3fa5b019"
+        },
+        "owner_id": null,
+        "who_access": "developer",
+        "status": true,
+        "role": "owner",
+        "level": "class A",
+        "program": [
+            {
+                "access": true,
+                "_id": {
+                    "$oid": "691f3188e6b0b3dc3fa5b024"
+                },
+                "menuid": "dashboard",
+                "submenu": []
+            },
+            {
+                "access": true,
+                "_id": {
+                    "$oid": "691f3188e6b0b3dc3fa5b025"
+                },
+                "menuid": "administrative",
+                "submenu": [
+                    {
+                        "access": true,
+                        "read": true,
+                        "edit": true,
+                        "delete": true,
+                        "_id": {
+                            "$oid": "691f3188e6b0b3dc3fa5b026"
+                        },
+                        "menuid": "user"
+                    },
+                    {
+                        "access": true,
+                        "read": true,
+                        "edit": true,
+                        "delete": true,
+                        "_id": {
+                            "$oid": "691f3188e6b0b3dc3fa5b027"
+                        },
+                        "menuid": "role"
+                    }
+                ]
+            },
+            {
+                "access": true,
+                "_id": {
+                    "$oid": "691f3188e6b0b3dc3fa5b028"
+                },
+                "menuid": "course",
+                "submenu": [
+                    {
+                        "access": true,
+                        "read": true,
+                        "edit": true,
+                        "delete": true,
+                        "_id": {
+                            "$oid": "691f3188e6b0b3dc3fa5b029"
+                        },
+                        "menuid": "teacher"
+                    },
+                    {
+                        "access": true,
+                        "read": true,
+                        "edit": true,
+                        "delete": true,
+                        "_id": {
+                            "$oid": "691f3188e6b0b3dc3fa5b02a"
+                        },
+                        "menuid": "student"
+                    }
+                ]
+            }
+        ],
+        "created_at": {
+            "$date": "2025-11-20T15:19:11.664Z"
+        },
+        "updated_at": {
+            "$date": "2025-11-20T15:19:36.700Z"
+        },
+        "__v": 0
+    }
+]

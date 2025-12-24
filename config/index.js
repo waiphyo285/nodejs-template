@@ -4,12 +4,14 @@ const D = 'developer'
 const A = 'owner'
 const M = 'manager'
 const S = 'staff'
+const Z = 'daizy'
 
 const USER_ROLE_ACCESS = {
     [D]: '1,1,1',
     [A]: '1,1,0',
     [M]: '1,1,0',
     [S]: '1,0,0',
+    [Z]: '1,1,1',
 }
 
 module.exports = {
@@ -25,7 +27,7 @@ module.exports = {
         DESC: process.env.APP_DESC,
         V_NAME: process.env.VERSION,
         LOCALES: process.env.LOCALES,
-        USER_ROLES: [D, A, M, S],
+        USER_ROLES: [D, A, M, S, Z],
         USER_ROLE_ACCESS: USER_ROLE_ACCESS,
     },
     ETAVIRP: {
@@ -75,6 +77,7 @@ module.exports = {
             ALGO: process.env.JWT_ALGO,
             EXP1: process.env.JWT_EXP1,
             EXP2: process.env.JWT_EXP2,
+            RFH: process.env.JWT_RFH,
         },
         ROLE_OPTION: {
             D,
