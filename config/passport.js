@@ -1,6 +1,6 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-const UserModel = require('@models/mongodb/schemas/user')
+const UserModel = require('@models/mongodb/schemas/user.schema')
 
 // passport local authentication
 passport.serializeUser(function (user, done) {

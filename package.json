@@ -64,11 +64,13 @@
         "@bin": "bin",
         "@config": "config",
         "@routes": "routes",
+        "@resources": "resources",
+        "@utils": "utils",
         "@controllers": "app/http/controllers",
         "@middleware": "app/http/middleware",
         "@models": "app/models",
-        "@utils": "app/utils",
-        "@generator": "app/console/generator",
-        "@resources": "resources"
+        "@domain": "app/domain",
+        "@application": "app/application",
+        "@infrastructure": "app/infrastructure"
     }
 }

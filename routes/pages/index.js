@@ -1,20 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
-const checkAuth = require('@middleware/dto/is-valid-user')
-const isValidDto = require('@middleware/dto/is-valid-dto')
+const checkAuth = require('@middleware/dto/is-valid-user.middleware')
+const isValidDto = require('@middleware/dto/is-valid-dto.middleware')
 
-const userDto = require('@models/validations/user')
-const userRoleDto = require('@models/validations/user-role')
-const teacherDto = require('@models/validations/teacher')
-const studentDto = require('@models/validations/student')
+const userDto = require('@models/validations/user.validation')
+const userRoleDto = require('@models/validations/user-role.validation')
+const teacherDto = require('@models/validations/teacher.validation')
+const studentDto = require('@models/validations/student.validation')
 
-const DashboardHandler = require('./dashboard')
-const TemplatePageHandler = require('./template')
-const UserRolePageHandler = require('./user-role')
-const UserPageHandler = require('./user')
-const TeacherPageHandler = require('./teacher')
-const StudentPageHandler = require('./student')
+const DashboardHandler = require('./dashboard.route')
+const TemplatePageHandler = require('./template.route')
+const UserRolePageHandler = require('./user-role.route')
+const UserPageHandler = require('./user.route')
+const TeacherPageHandler = require('./teacher.route')
+const StudentPageHandler = require('./student.route')
 
 // Dashboard
 router.get('/', checkAuth, DashboardHandler.index)

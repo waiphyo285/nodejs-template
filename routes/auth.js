@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 const config = require('@config/index')
-const UserModel = require('@models/mongodb/schemas/user')
-const { signToken_1 } = require('@middleware/token/jwt-token')
-const { generateCsrf } = require('@middleware/token/csrf-token')
+const UserModel = require('@models/mongodb/schemas/user.schema')
+const { signToken_1 } = require('@middleware/token/jwt-token.middleware')
+const { generateCsrf } = require('@middleware/token/csrf-token.middleware')
 
 class AuthHandler {
     static signupPage(req, res, next) {

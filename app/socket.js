@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 
 const config = require('@config/index')
-const clr = require('@utils/config/logcolor')
+const clr = require('@utils/config/logcolor.config')
 const { corsOptions } = require('@config/cors')
 
 const app = express()

@@ -1,23 +1,18 @@
 const express = require('express')
 const router = express.Router()
 
-// routes
-const users = require('./user')
-const userRoles = require('./user-role')
-const teachers = require('./teacher')
-const students = require('./student')
+const { isDA } = require('@utils/handlers/access-url.handler')
+const isValidDto = require('@middleware/dto/is-valid-dto.middleware')
 
-// helpers
-const { isDA } = require('@utils/handlers/access-url')
+const users = require('./user.route')
+const userRoles = require('./user-role.route')
+const teachers = require('./teacher.route')
+const students = require('./student.route')
 
-// middleware
-const isValidDto = require('@middleware/dto/is-valid-dto')
-
-// schema validations
-const userDto = require('@models/validations/user')
-const userRoleDto = require('@models/validations/user-role')
-const teacherDto = require('@models/validations/teacher')
-const studentDto = require('@models/validations/student')
+const userDto = require('@models/validations/user.validation')
+const userRoleDto = require('@models/validations/user-role.validation')
+const teacherDto = require('@models/validations/teacher.validation')
+const studentDto = require('@models/validations/student.validation')
 
 module.exports = router
 

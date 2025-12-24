@@ -1,89 +1,177 @@
-<img src="./public/images/readme/readme-cover.jpg" >
+<img src="./public/images/readme/readme-cover.jpg">
 
-## Getting Started
+## Node.js API Template
 
-First of all, let me admit [this article](https://mannhowie.com/clean-architecture-node) is inspired to develop this project. Uncle Bob's famous [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) is a way to write resilient software.
+### Overview
 
-I am introduced a simple API template for backend developers using clean architecture based on express application. When you choose Node.js + SQL (MySQL) or NoSQL (MongoDB) as your backend stack, the template is based on the following frameworks and libraries to completely cover a project that is ready for production.
+A production-ready Node.js API template built using **Uncle Bob’s Clean Architecture** to ensure your codebase remains **testable, maintainable, scalable**, and independent of frameworks and external services.
 
-<br/>
+- **Inspired by:** [https://mannhowie.com/clean-architecture-node](https://mannhowie.com/clean-architecture-node)
+- **Reference:** [https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 
-[**Express**](https://bit.ly/3FeNkRi)
 
--   a powerful and flexible framework that makes it easy to build web applications and APIs using Node.js. Its minimalist approach and large ecosystem make it a popular choice for developers who want to build scalable and maintainable web applications.
+## Clean Architecture Overview
 
-[**Sequelize**](https://bit.ly/40zuH2f)
+Clean Architecture focuses on clear separation of concerns, ensuring:
 
--   an Object-Relational Mapping (ORM) library for Node.js, which allows you to work with relational databases such as MySQL, PostgreSQL, and SQLite using JavaScript syntax.
+* **Independence from frameworks**
+* **Easy testability**
+* **Database agnostic**
+* **Reusable across UI/API/CLI**
+* **Minimal coupling to external systems**
 
-[**Mongoose**](https://bit.ly/3TA0ZGT)
+### Architecture Layers
 
--   a powerful and flexible ODM library for MongoDB and Node.js that provides a rich set of tools for working with data. Its schema-based approach, data validation tools, and powerful
+This project implements a **4-layer clean architecture**:
 
-[**Bootstrap**](https://bit.ly/3VQCqXA)
+```
+┌─────────────────────────────────────────────────────────┐
+│                    PRESENTATION LAYER                   │
+│  (Routes, Controllers, HTTP Middleware, Serializers)    │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│                  APPLICATION LAYER                      │
+│  (Use Cases, Orchestration, Business Flow)              │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│                    DOMAIN LAYER                         │
+│  (Entities, Services, Business Rules, Interfaces)       │
+└─────────────────────────────────────────────────────────┘
+                            ↓
+┌─────────────────────────────────────────────────────────┐
+│                 INFRASTRUCTURE LAYER                    │
+│  (Repositories, Database, External Services)            │
+└─────────────────────────────────────────────────────────┘
+```
 
--   a popular front-end framework for building responsive and mobile-first web applications. It was originally developed by Twitter and is now maintained by the open-source community.
 
-[**Passport**](https://bit.ly/3W24cAr)
 
--   an open-source authentication middleware for Node.js. It provides a simple and modular approach to authentication that makes it easy to add user authentication to web applications.
+## Key Benefits
 
-[**Multer**](https://bit.ly/3NhgEZr)
+### ✅ Testability
 
--   a popular package that provides middleware for handling multipart/form-data in Node.js. It's commonly used in web applications to handle file uploads from users.
+Business logic can be tested without Express, DB, or external tools.
 
-[**JWT**](https://bit.ly/3W2dNrg)
+```javascript
+describe('Create User Use Case', () => {
+  it('creates a user', async () => {
+    const repo = { save: jest.fn() }
+    const useCase = new CreateUserUseCase(repo)
+    await useCase.execute({ name: 'John', email: 'john@example.com' })
+    expect(repo.save).toHaveBeenCalled()
+  })
+})
+```
 
--   in the context of Node.js, the jsonwebtoken package is a popular npm package that provides a simple way to create and verify JWTs.
+### ✅ Reusability
 
-[**Mocha**](https://bit.ly/3f95w3Q)
+Same use case can run in API, CLI, Jobs:
 
--   a testing framework for Node.js applications. It's designed to provide a simple and flexible way to write and run tests, with support for a variety of testing styles and frameworks.
+```javascript
+const useCase = container.get('createUserUseCase')
+```
 
-**The followings must be pre-installed on your machine:**
+### ✅ Framework Independence
 
--   Node.js,
--   MongoDB,
--   Redis
+Swap:
 
-**Clone itemplate repository**
+* Express → Fastify
+* MongoDB → PostgreSQL
+* Without touching business logic
+
+### ✅ Scalability
+
+Easy feature isolation and microservice extraction.
+
+### ✅ Maintainability
+
+Clear structure, easy onboarding, reduced duplication.
+
+
+
+## Technology Stack
+
+### Core
+
+* **Express.js** – Web framework
+
+### Databases
+
+* **Sequelize** – SQL ORM (MySQL, PostgreSQL, MariaDB, SQLite)
+* **Mongoose** – MongoDB ODM
+
+### Security
+
+* Passport.js
+* JWT
+* CSRF
+* Rate limiting
+
+### File Upload
+
+* Multer
+
+### Frontend
+
+* Bootstrap
+
+### Testing
+
+* Mocha
+
+
+
+## Prerequisites
+
+Install:
+
+* Node.js v14+
+* MongoDB
+* MySQL
+* Redis
+* npm / yarn
+
+
+
+## Installation
 
 ```bash
-git clone https://github.com/waiphyo285/nodejs-starter-kit.git
+git clone https://github.com/waiphyo285/nodejs-template.git
+cd nodejs-template && npm install && cp .env.example .env
+npm run dev
 ```
 
-**Visit Public Postman Collection**
+Visit:
 
 ```
-https://documenter.getpostman.com/view/10018411/2s83mbr5iK
+http://localhost:8765
 ```
 
-**Navigate root directory and install dependencies**
 
-```bash
-npm install
-```
 
-**Copy `.env.example` to `.env`**
+## Scripts
 
-```bash
-cp .env.example .env
-```
-
-**Run app and then go to browser**
+### Development
 
 ```bash
 npm run dev
-localhost:8765
 ```
 
-**TDD `./../.spec.js` in controllers**
+### Production
 
+```bash
+npm run start
 ```
+
+### Tests
+
+```bash
 npm run test
 ```
 
-**CLI commands in src/cli**
+### CLI
 
 ```bash
 node index
@@ -91,4 +179,41 @@ node index --index
 node index --show=623210497fc2cb28840d1448
 ```
 
-\_Note: this application is different to the Clean Architecture diagram above but attempts to achieve the same outcome.
+
+
+## API Documentation
+
+Postman Collection:
+
+```
+https://documenter.getpostman.com/view/10018411/2s83mbr5iK
+```
+
+
+
+## Best Practices Implemented
+
+* Dependency Injection
+* Repository Pattern
+* Use Case Pattern
+* Service Layer
+* Middleware Structure
+* Centralized Error Handling
+* Validation Layer
+* Logging
+* Security Layer
+* Consistent Naming
+
+
+
+## Contributing
+
+PRs welcome!
+
+
+
+## License
+
+MIT License
+
+

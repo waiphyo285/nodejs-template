@@ -3,7 +3,7 @@ const path = require('path')
 const multer = require('multer')
 const helpers = require('./helpers')
 const config = require('@config/index')
-const { createApiResponse } = require('@utils/handlers/response')
+const { createApiResponse } = require('@utils/handlers/response.handler')
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {

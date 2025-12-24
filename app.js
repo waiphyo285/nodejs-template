@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser')
 const passport = require('passport')
 
 // app logger
-require('@utils/logger')
+require('@utils/logger.util')
 require('@config/passport')
 
 // database connections
@@ -25,15 +25,14 @@ const { cookieConfig } = require('@config/cookies')
 const { morganLogger } = require('@config/logger')
 
 // app features
-const { addParams } = require('@middleware/params')
-const { ipRateLimiter } = require('@middleware/limiter')
+const { addParams } = require('@middleware/params.middleware')
+const { ipRateLimiter } = require('@middleware/limiter.middleware')
 
 // protect routes
-const { tokenRouter, verifyToken } = require('@middleware/token/jwt-token')
-const { csrfRouter, csrfProtection } = require('@middleware/token/csrf-token')
+const { tokenRouter, verifyToken } = require('@middleware/token/jwt-token.middleware')
+const { csrfRouter, csrfProtection } = require('@middleware/token/csrf-token.middleware')
 
 // api router
-const genRouter = require('@generator')
 const authRouter = require('@routes/auth')
 const apiV1Router = require('@routes/api/v1')
 const fileRouter = require('@routes/files')
@@ -84,7 +83,6 @@ app.use('/file', verifyToken, fileRouter)
 app.use('/api/v1', verifyToken, addParams, apiV1Router)
 
 // connect to page routes
-app.use(genRouter)
 app.use(authRouter)
 app.use(addParams, pagesRouter)
 // app.use(csrfProtection, addParams, pagesRouter)

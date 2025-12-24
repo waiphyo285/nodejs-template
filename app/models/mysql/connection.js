@@ -35,8 +35,8 @@ database.Sequelize = Sequelize
 database.sequelize = instance
 
 // Import models
-database.teachers = require('./schemas/teacher')(instance, Sequelize)
-database.students = require('./schemas/student')(instance, Sequelize)
+database.teachers = require('./schemas/teacher.schema')(instance, Sequelize)
+database.students = require('./schemas/student.schema')(instance, Sequelize)
 
 // Sync database
 database.sequelize

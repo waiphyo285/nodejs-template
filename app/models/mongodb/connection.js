@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { MongoMemoryServer } = require('mongodb-memory-server')
 
 const config = require('@config')
-const clr = require('@utils/config/logcolor')
+const clr = require('@utils/config/logcolor.config')
 
 // Use ES6 Promises for mongoose
 mongoose.Promise = global.Promise
