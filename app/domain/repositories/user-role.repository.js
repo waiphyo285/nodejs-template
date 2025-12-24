@@ -1,7 +1,3 @@
-/**
- * User Role Repository Interface
- * Defines the contract for user role data access operations
- */
 class UserRoleRepository {
     async find(filter) {
         throw new Error('find() must be implemented')

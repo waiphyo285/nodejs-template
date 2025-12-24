@@ -1,7 +1,6 @@
 const UserRoleRepository = require('@domain/repositories/user-role.repository')
 const UserRoleModel = require('@models/mongodb/schemas/user-role.schema')
 
-
 class UserRoleRepositoryMongoDB extends UserRoleRepository {
     async find(filter) {
         return UserRoleModel.find(filter).lean()
@@ -21,8 +20,9 @@ class UserRoleRepositoryMongoDB extends UserRoleRepository {
     }
 
     async update(id, data) {
-        return UserRoleModel.findOneAndUpdate({ _id: id }, data, { new: true })
-            .lean()
+        return UserRoleModel.findOneAndUpdate({ _id: id }, data, {
+            new: true,
+        }).lean()
     }
 
     async delete(id) {

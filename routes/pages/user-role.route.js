@@ -1,7 +1,10 @@
 const utils = require('@utils/index')
 const container = require('@infrastructure/container/bootstrap')
 const programMenu = require('@resources/lang/menus/menu-en.json')
-const { renderPage, handleServiceResponse } = require('@utils/handlers/response.handler')
+const {
+    renderPage,
+    handleServiceResponse,
+} = require('@utils/handlers/response.handler')
 
 class UserRolePageHandler {
     static list(req, res) {
@@ -61,21 +64,21 @@ class UserRolePageHandler {
     static create(req, res) {
         req.body.who_access = req.user.user_type
         const useCase = container.get('createRoleUseCase')
-        const resultPromise = useCase.execute(req.body)
-            .then(result => {
-                if (result.success) {
-                    return { data: result.data }
-                }
-                throw new Error(result.error)
-            })
+        const resultPromise = useCase.execute(req.body).then((result) => {
+            if (result.success) {
+                return { data: result.data }
+            }
+            throw new Error(result.error)
+        })
         handleServiceResponse(resultPromise, utils.isEmptyObject, res)
     }
 
     static update(req, res) {
         const { ['id']: rmId, ...data } = req.body
         const useCase = container.get('updateRoleUseCase')
-        const resultPromise = useCase.execute({ id: rmId, data })
-            .then(result => {
+        const resultPromise = useCase
+            .execute({ id: rmId, data })
+            .then((result) => {
                 if (result.success) {
                     return { data: result.data }
                 }

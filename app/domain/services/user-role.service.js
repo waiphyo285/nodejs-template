@@ -1,7 +1,3 @@
-/**
- * User Role Domain Service
- * Contains business logic for user role operations
- */
 class UserRoleService {
     constructor(userRoleRepository) {
         this.userRoleRepository = userRoleRepository

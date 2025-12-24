@@ -1,6 +1,9 @@
 const programConfig = require('@config/config.json')
 const UserRoleController = require('@controllers/user-role.controller')
-const { createApiResponse, mapErrorToResponse } = require('@utils/handlers/response.handler')
+const {
+    createApiResponse,
+    mapErrorToResponse,
+} = require('@utils/handlers/response.handler')
 
 class UserRoleHandler {
     static config(req, res, next) {

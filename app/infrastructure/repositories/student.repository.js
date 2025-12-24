@@ -11,25 +11,25 @@ class StudentRepositoryMySQL extends StudentRepository {
 
         const condition = filter.search
             ? {
-                [Op.or]: [
-                    { name: { [Op.like]: `%${filter.search}%` } },
-                    { grade: { [Op.like]: `%${filter.search}%` } }
-                ]
-            }
+                  [Op.or]: [
+                      { name: { [Op.like]: `%${filter.search}%` } },
+                      { grade: { [Op.like]: `%${filter.search}%` } },
+                  ],
+              }
             : {}
 
         const result = await Student.findAndCountAll({
             where: condition,
             limit: parseInt(limit),
             offset: parseInt(offset),
-            order: [['created_at', 'DESC']]
+            order: [['created_at', 'DESC']],
         })
 
         return {
             data: result.rows,
             total: result.count,
             limit: parseInt(limit),
-            offset: parseInt(offset)
+            offset: parseInt(offset),
         }
     }
 

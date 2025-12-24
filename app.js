@@ -29,8 +29,14 @@ const { addParams } = require('@middleware/params.middleware')
 const { ipRateLimiter } = require('@middleware/limiter.middleware')
 
 // protect routes
-const { tokenRouter, verifyToken } = require('@middleware/token/jwt-token.middleware')
-const { csrfRouter, csrfProtection } = require('@middleware/token/csrf-token.middleware')
+const {
+    tokenRouter,
+    verifyToken,
+} = require('@middleware/token/jwt-token.middleware')
+const {
+    csrfRouter,
+    csrfProtection,
+} = require('@middleware/token/csrf-token.middleware')
 
 // api router
 const authRouter = require('@routes/auth')

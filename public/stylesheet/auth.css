@@ -148,7 +148,7 @@ label.radio span {
     border: 1px solid var(--back-gray);
 }
 
-label.radio input:checked+span {
+label.radio input:checked + span {
     color: var(--text-white);
     background: var(--primary);
     border-color: var(--primary);

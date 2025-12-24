@@ -53,37 +53,109 @@ container.register('studentRepository', () => new StudentRepository())
 container.register('userRoleRepository', () => new UserRoleRepository())
 
 // Register Services
-container.register('userService', () => new UserService(container.get('userRepository')))
-container.register('teacherService', () => new TeacherService(container.get('teacherRepository')))
-container.register('studentService', () => new StudentService(container.get('studentRepository')))
-container.register('userRoleService', () => new UserRoleService(container.get('userRoleRepository')))
+container.register(
+    'userService',
+    () => new UserService(container.get('userRepository'))
+)
+container.register(
+    'teacherService',
+    () => new TeacherService(container.get('teacherRepository'))
+)
+container.register(
+    'studentService',
+    () => new StudentService(container.get('studentRepository'))
+)
+container.register(
+    'userRoleService',
+    () => new UserRoleService(container.get('userRoleRepository'))
+)
 
 // Register User Use Cases
-container.register('findUsersUseCase', () => new FindUsersUseCase(container.get('userService')))
-container.register('getUserByIdUseCase', () => new GetUserByIdUseCase(container.get('userService')))
-container.register('createUserUseCase', () => new CreateUserUseCase(container.get('userService')))
-container.register('updateUserUseCase', () => new UpdateUserUseCase(container.get('userService')))
-container.register('deleteUserUseCase', () => new DeleteUserUseCase(container.get('userService')))
+container.register(
+    'findUsersUseCase',
+    () => new FindUsersUseCase(container.get('userService'))
+)
+container.register(
+    'getUserByIdUseCase',
+    () => new GetUserByIdUseCase(container.get('userService'))
+)
+container.register(
+    'createUserUseCase',
+    () => new CreateUserUseCase(container.get('userService'))
+)
+container.register(
+    'updateUserUseCase',
+    () => new UpdateUserUseCase(container.get('userService'))
+)
+container.register(
+    'deleteUserUseCase',
+    () => new DeleteUserUseCase(container.get('userService'))
+)
 
 // Register Teacher Use Cases
-container.register('findTeachersUseCase', () => new FindTeachersUseCase(container.get('teacherService')))
-container.register('getTeacherByIdUseCase', () => new GetTeacherByIdUseCase(container.get('teacherService')))
-container.register('createTeacherUseCase', () => new CreateTeacherUseCase(container.get('teacherService')))
-container.register('updateTeacherUseCase', () => new UpdateTeacherUseCase(container.get('teacherService')))
-container.register('deleteTeacherUseCase', () => new DeleteTeacherUseCase(container.get('teacherService')))
+container.register(
+    'findTeachersUseCase',
+    () => new FindTeachersUseCase(container.get('teacherService'))
+)
+container.register(
+    'getTeacherByIdUseCase',
+    () => new GetTeacherByIdUseCase(container.get('teacherService'))
+)
+container.register(
+    'createTeacherUseCase',
+    () => new CreateTeacherUseCase(container.get('teacherService'))
+)
+container.register(
+    'updateTeacherUseCase',
+    () => new UpdateTeacherUseCase(container.get('teacherService'))
+)
+container.register(
+    'deleteTeacherUseCase',
+    () => new DeleteTeacherUseCase(container.get('teacherService'))
+)
 
 // Register Student Use Cases
-container.register('findStudentsUseCase', () => new FindStudentsUseCase(container.get('studentService')))
-container.register('getStudentByIdUseCase', () => new GetStudentByIdUseCase(container.get('studentService')))
-container.register('createStudentUseCase', () => new CreateStudentUseCase(container.get('studentService')))
-container.register('updateStudentUseCase', () => new UpdateStudentUseCase(container.get('studentService')))
-container.register('deleteStudentUseCase', () => new DeleteStudentUseCase(container.get('studentService')))
+container.register(
+    'findStudentsUseCase',
+    () => new FindStudentsUseCase(container.get('studentService'))
+)
+container.register(
+    'getStudentByIdUseCase',
+    () => new GetStudentByIdUseCase(container.get('studentService'))
+)
+container.register(
+    'createStudentUseCase',
+    () => new CreateStudentUseCase(container.get('studentService'))
+)
+container.register(
+    'updateStudentUseCase',
+    () => new UpdateStudentUseCase(container.get('studentService'))
+)
+container.register(
+    'deleteStudentUseCase',
+    () => new DeleteStudentUseCase(container.get('studentService'))
+)
 
 // Register User Role Use Cases
-container.register('findRolesUseCase', () => new FindRolesUseCase(container.get('userRoleService')))
-container.register('getRoleByIdUseCase', () => new GetRoleByIdUseCase(container.get('userRoleService')))
-container.register('createRoleUseCase', () => new CreateRoleUseCase(container.get('userRoleService')))
-container.register('updateRoleUseCase', () => new UpdateRoleUseCase(container.get('userRoleService')))
-container.register('deleteRoleUseCase', () => new DeleteRoleUseCase(container.get('userRoleService')))
+container.register(
+    'findRolesUseCase',
+    () => new FindRolesUseCase(container.get('userRoleService'))
+)
+container.register(
+    'getRoleByIdUseCase',
+    () => new GetRoleByIdUseCase(container.get('userRoleService'))
+)
+container.register(
+    'createRoleUseCase',
+    () => new CreateRoleUseCase(container.get('userRoleService'))
+)
+container.register(
+    'updateRoleUseCase',
+    () => new UpdateRoleUseCase(container.get('userRoleService'))
+)
+container.register(
+    'deleteRoleUseCase',
+    () => new DeleteRoleUseCase(container.get('userRoleService'))
+)
 
 module.exports = container

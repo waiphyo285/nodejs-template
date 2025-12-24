@@ -1,7 +1,3 @@
-/**
- * Teacher Repository Interface
- * Defines the contract for teacher data access operations
- */
 class TeacherRepository {
     async find(filter, pagination) {
         throw new Error('find() must be implemented')

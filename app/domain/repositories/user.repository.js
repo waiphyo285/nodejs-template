@@ -1,7 +1,3 @@
-/**
- * User Repository Interface
- * Defines the contract for user data access operations
- */
 class UserRepository {
     async find(filter) {
         throw new Error('find() must be implemented')

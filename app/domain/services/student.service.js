@@ -1,7 +1,3 @@
-/**
- * Student Domain Service
- * Contains business logic for student operations
- */
 class StudentService {
     constructor(studentRepository) {
         this.studentRepository = studentRepository

@@ -13,42 +13,44 @@ const seedStudents = async () => {
                 age: 20,
                 grade: 85,
                 images: ['/uploads/students/sample-student-1.jpg'],
-                status: true
+                status: true,
             },
             {
                 name: 'Bob Smith',
                 age: 19,
                 grade: 92,
-                images: ['/uploads/students/sample-student-2.jpg', '/uploads/students/sample-student-2b.jpg'],
-                status: true
+                images: [
+                    '/uploads/students/sample-student-2.jpg',
+                    '/uploads/students/sample-student-2b.jpg',
+                ],
+                status: true,
             },
             {
                 name: 'Charlie Brown',
                 age: 21,
                 grade: 78,
                 images: [],
-                status: true
+                status: true,
             },
             {
                 name: 'Diana Prince',
                 age: 20,
                 grade: 95,
                 images: ['/uploads/students/sample-student-4.jpg'],
-                status: true
+                status: true,
             },
             {
                 name: 'Edward Wilson',
                 age: 22,
                 grade: 67,
                 images: [],
-                status: false
-            }
+                status: false,
+            },
         ]
 
         // Insert seed data
         await Student.bulkCreate(students)
         console.log('Student seed data inserted successfully!')
-
     } catch (error) {
         console.error('Error seeding students:', error)
     }

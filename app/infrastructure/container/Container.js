@@ -1,7 +1,3 @@
-/**
- * Dependency Injection Container
- * Manages all service dependencies and instantiation
- */
 class Container {
     constructor() {
         this.services = {}

@@ -14,7 +14,7 @@ describe('Teacher API Tests', () => {
                 name: 'Test Teacher',
                 age: 35,
                 degree: 'Masters in Education',
-                status: true
+                status: true,
             }
 
             chai.request(app)
@@ -49,7 +49,10 @@ describe('Teacher API Tests', () => {
                 .end((err, res) => {
                     expect(res).to.have.status(200)
                     expect(res.body).to.have.property('data')
-                    expect(res.body.data).to.have.property('name', 'Test Teacher')
+                    expect(res.body.data).to.have.property(
+                        'name',
+                        'Test Teacher'
+                    )
                     done()
                 })
         })
@@ -60,7 +63,7 @@ describe('Teacher API Tests', () => {
             const updatedTeacher = {
                 name: 'Updated Test Teacher',
                 age: 36,
-                degree: 'PhD in Education'
+                degree: 'PhD in Education',
             }
 
             chai.request(app)

@@ -4,7 +4,6 @@ const Database = require('@models/mysql/connection')
 const Teacher = Database.teachers
 const Op = Database.Sequelize.Op
 
-
 class TeacherRepositoryMySQL extends TeacherRepository {
     async find(filter, pagination = {}) {
         const { limit = 10, offset = 0 } = pagination
@@ -17,14 +16,14 @@ class TeacherRepositoryMySQL extends TeacherRepository {
             where: condition,
             limit: parseInt(limit),
             offset: parseInt(offset),
-            order: [['created_at', 'DESC']]
+            order: [['created_at', 'DESC']],
         })
 
         return {
             data: result.rows,
             total: result.count,
             limit: parseInt(limit),
-            offset: parseInt(offset)
+            offset: parseInt(offset),
         }
     }
 

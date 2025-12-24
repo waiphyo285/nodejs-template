@@ -1,7 +1,3 @@
-/**
- * Student Repository Interface
- * Defines the contract for student data access operations
- */
 class StudentRepository {
     async find(filter, pagination) {
         throw new Error('find() must be implemented')

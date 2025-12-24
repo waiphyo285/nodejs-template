@@ -3,29 +3,17 @@
         {
             "_id": "owner",
             "display": "Owner",
-            "who_access": [
-                "developer",
-                "owner"
-            ]
+            "who_access": ["developer", "owner"]
         },
         {
             "_id": "manager",
             "display": "Manager",
-            "who_access": [
-                "developer",
-                "owner",
-                "manager"
-            ]
+            "who_access": ["developer", "owner", "manager"]
         },
         {
             "_id": "staff",
             "display": "Staff",
-            "who_access": [
-                "developer",
-                "owner",
-                "manager",
-                "staff"
-            ]
+            "who_access": ["developer", "owner", "manager", "staff"]
         }
     ]
 }

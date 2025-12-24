@@ -1,6 +1,9 @@
 const utils = require('@utils/index')
 const container = require('@infrastructure/container/bootstrap')
-const { renderPage, handleServiceResponse } = require('@utils/handlers/response.handler')
+const {
+    renderPage,
+    handleServiceResponse,
+} = require('@utils/handlers/response.handler')
 
 class TeacherPageHandler {
     static list(req, res) {
@@ -34,21 +37,21 @@ class TeacherPageHandler {
     static create(req, res) {
         const { ['id']: _id, ...data } = req.body
         const useCase = container.get('createTeacherUseCase')
-        const resultPromise = useCase.execute(data)
-            .then(result => {
-                if (result.success) {
-                    return { data: result.data }
-                }
-                throw new Error(result.error)
-            })
+        const resultPromise = useCase.execute(data).then((result) => {
+            if (result.success) {
+                return { data: result.data }
+            }
+            throw new Error(result.error)
+        })
         handleServiceResponse(resultPromise, utils.isEmptyObject, res)
     }
 
     static update(req, res) {
         const { ['id']: rmId, ...data } = req.body
         const useCase = container.get('updateTeacherUseCase')
-        const resultPromise = useCase.execute({ id: rmId, data })
-            .then(result => {
+        const resultPromise = useCase
+            .execute({ id: rmId, data })
+            .then((result) => {
                 if (result.success) {
                     return { data: result.data }
                 }

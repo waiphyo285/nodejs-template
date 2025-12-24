@@ -204,7 +204,9 @@ utils.removeImages = async function (images) {
             results.push({ file, success: true })
         } catch (err) {
             if (err.code === 'ENOENT') {
-                console.info(`File ${file} was already removed or doesn't exist`)
+                console.info(
+                    `File ${file} was already removed or doesn't exist`
+                )
                 results.push({ file, success: true, reason: 'already_removed' })
             } else {
                 console.error(`File deletion error for ${file}:`, err.message)
@@ -239,8 +241,8 @@ utils.nFormatter = function (num, digits) {
 
     return item
         ? sign +
-        (absoluteNum / item.value).toFixed(digits).replace(rx, '$1') +
-        item.symbol
+              (absoluteNum / item.value).toFixed(digits).replace(rx, '$1') +
+              item.symbol
         : '0'
 }
 

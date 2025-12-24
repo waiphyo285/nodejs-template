@@ -2,7 +2,6 @@ const UserRepository = require('@domain/repositories/user.repository')
 const UserModel = require('@models/mongodb/schemas/user.schema')
 const UserLogModel = require('@models/mongodb/schemas/user-log.schema')
 
-
 class UserRepositoryMongoDB extends UserRepository {
     async find(filter) {
         return UserModel.find(filter)
@@ -31,8 +30,9 @@ class UserRepositoryMongoDB extends UserRepository {
     }
 
     async update(id, data) {
-        return UserModel.findOneAndUpdate({ _id: id }, data, { new: true })
-            .lean()
+        return UserModel.findOneAndUpdate({ _id: id }, data, {
+            new: true,
+        }).lean()
     }
 
     async delete(id) {

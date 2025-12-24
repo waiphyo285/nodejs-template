@@ -1,7 +1,3 @@
-/**
- * Teacher Domain Service
- * Contains business logic for teacher operations
- */
 class TeacherService {
     constructor(teacherRepository) {
         this.teacherRepository = teacherRepository

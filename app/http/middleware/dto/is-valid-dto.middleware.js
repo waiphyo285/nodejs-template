@@ -5,8 +5,10 @@ const { createApiResponse } = require('@utils/handlers/response.handler')
 
 const isValidData = (schema, property) => {
     return (req, res, next) => {
-        !utils.isEmpty(req.body) && iamlog.info('Validate body ', JSON.stringify(req.body))
-        !utils.isEmpty(property) && iamlog.info('Validate schema ', JSON.stringify(property))
+        !utils.isEmpty(req.body) &&
+            iamlog.info('Validate body ', JSON.stringify(req.body))
+        !utils.isEmpty(property) &&
+            iamlog.info('Validate schema ', JSON.stringify(property))
 
         const { error } = joi.validate(req.body, schema)
         const locales = res.locals.i18n.translations

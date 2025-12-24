@@ -12,13 +12,12 @@ const addImagesToStudents = async () => {
             await queryInterface.addColumn('students', 'images', {
                 type: Database.Sequelize.JSON,
                 defaultValue: [],
-                allowNull: true
+                allowNull: true,
             })
             console.log('✅ Added images column to students table')
         } else {
             console.log('✅ Images column already exists in students table')
         }
-
     } catch (error) {
         console.error('❌ Error adding images column:', error)
     }

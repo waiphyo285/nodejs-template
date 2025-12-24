@@ -57,7 +57,9 @@ class UploadHandler {
                     createApiResponse(
                         400,
                         {
-                            data: { message: 'Please select an image to upload.' },
+                            data: {
+                                message: 'Please select an image to upload.',
+                            },
                         },
                         locales
                     )
@@ -124,7 +126,9 @@ class UploadHandler {
                     createApiResponse(
                         400,
                         {
-                            data: { message: 'Please select images to upload.' },
+                            data: {
+                                message: 'Please select images to upload.',
+                            },
                         },
                         locales
                     )

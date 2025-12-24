@@ -14,7 +14,7 @@ describe('Student API Tests', () => {
                 name: 'Test Student',
                 age: 20,
                 grade: 88,
-                status: true
+                status: true,
             }
 
             chai.request(app)
@@ -49,7 +49,10 @@ describe('Student API Tests', () => {
                 .end((err, res) => {
                     expect(res).to.have.status(200)
                     expect(res.body).to.have.property('data')
-                    expect(res.body.data).to.have.property('name', 'Test Student')
+                    expect(res.body.data).to.have.property(
+                        'name',
+                        'Test Student'
+                    )
                     done()
                 })
         })
@@ -60,7 +63,7 @@ describe('Student API Tests', () => {
             const updatedStudent = {
                 name: 'Updated Test Student',
                 age: 21,
-                grade: 90
+                grade: 90,
             }
 
             chai.request(app)

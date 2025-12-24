@@ -1,7 +1,3 @@
-/**
- * User Domain Service
- * Contains business logic for user operations
- */
 const utils = require('@utils/index')
 
 class UserService {

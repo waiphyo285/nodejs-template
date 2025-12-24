@@ -15,7 +15,7 @@ class DashboardHandler {
                 total_4: 75,
             },
             barchart: [],
-        },)
+        })
 
         res.render('pages/dashboard', {
             ...curUserProgram,
