@@ -1,5 +1,5 @@
 const path = require('path')
-const UserRole = require('@controllers/user-role.controller')
+const container = require('@infrastructure/container/bootstrap')
 
 const getMenuPath = (locale) => {
     const menuConfig = {
@@ -49,8 +49,9 @@ const getProgram = async (user, pageId) => {
 
     // other account based on role & level
     else {
-        const data = await UserRole.findById(user.level_id)
-        const userProgram = data.data.program
+        const userRoleService = container.get('userRoleService')
+        const result = await userRoleService.findById(user.level_id)
+        const userProgram = result.data.program
 
         const curUserProgram = initProgram.map((initMenu) => {
             const findMenu = userProgram.find(

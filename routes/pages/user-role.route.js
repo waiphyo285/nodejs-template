@@ -27,8 +27,9 @@ class UserRolePageHandler {
             const result = await useCase.execute({ id })
 
             if (result.success) {
-                data = result.data
-                const userProgram = data.data.program
+                const roleData = result.data || result
+                const userProgram =
+                    roleData.program || roleData.data?.program || []
 
                 data.data.program = initProgram.map((initMenu) => {
                     const findMenu = userProgram.find(
@@ -48,8 +49,14 @@ class UserRolePageHandler {
                     }
                     return { ...initMenu, ...findMenu, submenu: subMenuMap }
                 })
+
+                data.data = {
+                    ...roleData,
+                    program: data.data.program,
+                }
             }
         }
+
 
         const pages = {
             data: data.data || {},

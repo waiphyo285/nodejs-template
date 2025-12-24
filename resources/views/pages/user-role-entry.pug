@@ -145,12 +145,60 @@ block content
         filterObj: {},
       });
 
-      ajaxLoadOption({
-        type: "GET",
-        url:"/owner",
-        showKey: "name",
-        selectId: "#ownerId",
-        filterObj: { status: 1 },
-        isSelected: true,
-      });
+      //- ajaxLoadOption({
+      //-   type: "GET",
+      //-   url:"/owner",
+      //-   showKey: "name",
+      //-   selectId: "#ownerId",
+      //-   filterObj: { status: 1 },
+      //-   isSelected: true,
+      //- });
+
+      // Handle parent menu checkbox changes
+      $(document).on('change', 'input[name*="[access]"]:not([name*="[submenu]"])', function() {
+        const menuIdx = $(this).attr('name').match(/\[(\d+)\]/)[1]
+        const isChecked = $(this).is(':checked')
+        
+        // Find all submenus for this menu and update their checkboxes
+        $(`input[name*="[${menuIdx}][submenu]"]`).each(function() {
+          const $checkbox = $(this)
+          const $label = $checkbox.closest('label')
+          
+          // Update checkbox state
+          $checkbox.prop('checked', isChecked)
+          
+          // Update button styling
+          if (isChecked) {
+            $label.addClass('active')
+          } else {
+            $label.removeClass('active')
+          }
+        })
+      })
+
+      // Handle submenu checkbox changes
+      $(document).on('change', 'input[name*="[submenu]"]', function() {
+        const fullName = $(this).attr('name')
+        const menuMatch = fullName.match(/\[(\d+)\]\[submenu\]/)
+        
+        if (menuMatch) {
+          const menuIdx = menuMatch[1]
+          
+          // Get all submenus for this menu
+          const $submenus = $(`input[name*="[${menuIdx}][submenu]"][name*="[access]"]`)
+          const allChecked = $submenus.length > 0 && $submenus.toArray().every(el => $(el).is(':checked'))
+          
+          // Update parent menu checkbox
+          const $parentCheckbox = $(`input[name="program[${menuIdx}][access]"]`)
+          const $parentLabel = $parentCheckbox.closest('label')
+          
+          if (allChecked) {
+            $parentCheckbox.prop('checked', true)
+            $parentLabel.addClass('active')
+          } else {
+            $parentCheckbox.prop('checked', false)
+            $parentLabel.removeClass('active')
+          }
+        }
+      })
     });

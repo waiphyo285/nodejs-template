@@ -1,20 +1,49 @@
 const UserRepository = require('@domain/repositories/user.repository')
 const UserModel = require('@models/mongodb/schemas/user.schema')
 const UserLogModel = require('@models/mongodb/schemas/user-log.schema')
+const schema = require('@utils/schema.util')
 
 class UserRepositoryMongoDB extends UserRepository {
-    async find(filter) {
+    async find(query = {}) {
+        const { filter, w_regx, sort, skip, limit, draw } =
+            await schema.getPagingQuery(query, ['username'])
+
+        const recordsTotal = await UserModel.countDocuments(filter)
+
+        return UserModel.find(filter)
+            .or({ $or: w_regx })
+            .populate({
+                path: 'level_id',
+                model: 'user_role',
+                select: 'level',
+            })
+            .sort(sort)
+            .skip(skip)
+            .limit(limit)
+            .then((data) => {
+                return {
+                    data,
+                    draw,
+                    recordsTotal,
+                    recordsFiltered: recordsTotal,
+                }
+            })
+    }
+
+    async findById(id) {
+        return UserModel.findById(id).lean()
+    }
+
+    async findBy(query) {
+        const { filter } = await schema.getFilterQuery(query)
         return UserModel.find(filter)
             .populate({
                 path: 'level_id',
                 model: 'user_role',
                 select: 'level',
             })
+            .sort(sort)
             .lean()
-    }
-
-    async findById(id) {
-        return UserModel.findById(id).lean()
     }
 
     async findLogs(params) {

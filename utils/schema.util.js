@@ -49,7 +49,7 @@ schema.checkReference = async function (models) {
     })
 }
 
-schema.getQueryPaging = async function (args) {
+schema.getFilterQuery = async function (args) {
     let page = args.page || {}
 
     let sort = args.sort || {}
@@ -71,7 +71,7 @@ schema.getQueryPaging = async function (args) {
     return { sort, filter, skip, limit }
 }
 
-schema.getQueryParams = async function (args, words = ['name']) {
+schema.getPagingQuery = async function (args, words = ['name']) {
     const {
         start,
         length,

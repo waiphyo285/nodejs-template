@@ -1,35 +1,42 @@
 const StudentRepository = require('@domain/repositories/student.repository')
 const Database = require('@models/mysql/connection')
 const utils = require('@utils/index')
+const schema = require('@utils/schema.util')
 
 const Student = Database.students
 const Op = Database.Sequelize.Op
 
 class StudentRepositoryMySQL extends StudentRepository {
-    async find(filter, pagination = {}) {
-        const { limit = 10, offset = 0 } = pagination
+    async find(query = {}) {
+        const {
+            sort,
+            filter,
+            skip: offset,
+            limit,
+            draw,
+        } = await schema.getPagingQuery(query, ['name', 'grade'])
 
         const condition = filter.search
             ? {
-                  [Op.or]: [
-                      { name: { [Op.like]: `%${filter.search}%` } },
-                      { grade: { [Op.like]: `%${filter.search}%` } },
-                  ],
-              }
+                [Op.or]: [
+                    { name: { [Op.like]: `%${filter.search}%` } },
+                    { grade: { [Op.like]: `%${filter.search}%` } },
+                ],
+            }
             : {}
 
         const result = await Student.findAndCountAll({
             where: condition,
             limit: parseInt(limit),
             offset: parseInt(offset),
-            order: [['created_at', 'DESC']],
+            // order: Object.entries(sort).map(([key, value]) => [key, value === 1 ? 'ASC' : 'DESC']),
         })
 
         return {
             data: result.rows,
-            total: result.count,
-            limit: parseInt(limit),
-            offset: parseInt(offset),
+            draw,
+            recordsTotal: result.count,
+            recordsFiltered: result.count,
         }
     }
 
@@ -37,8 +44,13 @@ class StudentRepositoryMySQL extends StudentRepository {
         return Student.findByPk(id)
     }
 
-    async findBy(filter) {
-        return Student.findAll({ where: filter })
+    async findBy(query = {}) {
+        const { filter, sort } = await schema.getFilterQuery(query)
+
+        return Student.findAll({
+            where: filter,
+            // order: Object.entries(sort).map(([key, value]) => [key, value === 1 ? 'ASC' : 'DESC']),
+        })
     }
 
     async create(data) {

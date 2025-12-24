@@ -4,6 +4,8 @@
  * Module dependencies.
  */
 
+require('module-alias/register')
+
 const http = require('http')
 const app = require('../app')
 const config = require('@config/index')
