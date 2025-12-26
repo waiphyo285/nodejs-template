@@ -46,49 +46,41 @@ block content
       
       .quick-check
         .row.mb-4
-          .col-xl-3.col-sm-4.col-12.mt-2
-            .border
-              .card-content
-                .card-body
-                  .media.d-flex
-                    .align-self-center(style="font-size: 26px")
-                      i.bi.bi-file-bar-graph.text-success.float-left(style='font-size: 50px')
-                    .media-body.text-right
-                      h3.count-to.text-secondary !{data.card.total_1}
-                      span !{content.total_1}
+          .col-xl-3.col-sm-6.col-12.mt-3
+            .card-stats.p-3
+              .d-flex.align-items-center
+                .icon-box.bg-light-success
+                  i.bi.bi-briefcase(style='font-size: 28px')
+                .media-body
+                  span.text-muted.small.font-weight-bold !{content.total_1}
+                  h3.count-to.mb-0.font-weight-bold(style="color: #1e293b") !{data.card.total_1}
 
-          .col-xl-3.col-sm-4.col-12.mt-2
-            .border
-              .card-content
-                .card-body
-                  .media.d-flex
-                    .align-self-center(style="font-size: 26px")
-                      i.bi.bi-file-bar-graph.text-primary.float-left(style='font-size: 50px')
-                    .media-body.text-right
-                      h3.count-to.text-secondary !{data.card.total_2}
-                      span !{content.total_2}
+          .col-xl-3.col-sm-6.col-12.mt-3
+            .card-stats.p-3
+              .d-flex.align-items-center
+                .icon-box.bg-light-primary
+                  i.bi.bi-check-circle(style='font-size: 28px')
+                .media-body
+                  span.text-muted.small.font-weight-bold !{content.total_2}
+                  h3.count-to.mb-0.font-weight-bold(style="color: #1e293b") !{data.card.total_2}
 
-          .col-xl-3.col-sm-4.col-12.mt-2
-            .border
-              .card-content
-                .card-body
-                  .media.d-flex
-                    .align-self-center(style="font-size: 26px")
-                      i.bi.bi-file-bar-graph.text-info.float-left(style='font-size: 50px')
-                    .media-body.text-right
-                      h3.count-to.text-secondary !{data.card.total_3}
-                      span !{content.total_3}
+          .col-xl-3.col-sm-6.col-12.mt-3
+            .card-stats.p-3
+              .d-flex.align-items-center
+                .icon-box.bg-light-info
+                  i.bi.bi-clock-history(style='font-size: 28px')
+                .media-body
+                  span.text-muted.small.font-weight-bold !{content.total_3}
+                  h3.count-to.mb-0.font-weight-bold(style="color: #1e293b") !{data.card.total_3}
 
-          .col-xl-3.col-sm-4.col-12.mt-2
-            .border
-              .card-content
-                .card-body
-                  .media.d-flex
-                    .align-self-center(style="font-size: 26px")
-                      i.bi.bi-file-bar-graph.text-warning.float-left(style='font-size: 50px')
-                    .media-body.text-right
-                      h3.count-to.text-secondary !{data.card.total_4}
-                      span !{content.total_4}
+          .col-xl-3.col-sm-6.col-12.mt-3
+            .card-stats.p-3
+              .d-flex.align-items-center
+                .icon-box.bg-light-warning
+                  i.bi.bi-people(style='font-size: 28px')
+                .media-body
+                  span.text-muted.small.font-weight-bold !{content.total_4}
+                  h3.count-to.mb-0.font-weight-bold(style="color: #1e293b") !{data.card.total_4}
 
      
 

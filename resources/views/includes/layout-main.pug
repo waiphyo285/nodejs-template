@@ -35,8 +35,12 @@ head
   // Custom CSS
   link(href='/stylesheet/theme-config.css' rel='stylesheet')
   link#theme(href=`/stylesheet/theme-${user.theme}.css` rel='stylesheet')
-  link(href='/stylesheet/material-button.css' rel='stylesheet')
-  link(href='/stylesheet/dashboard.css' rel='stylesheet')
+  link(href='/stylesheet/base.css' rel='stylesheet')
+  link(href='/stylesheet/layout.css' rel='stylesheet')
+  link(href='/stylesheet/components.css' rel='stylesheet')
+  link(href='/stylesheet/buttons.css' rel='stylesheet')
+  link(href='/stylesheet/forms.css' rel='stylesheet')
+  link(href='/stylesheet/tables.css' rel='stylesheet')
   
   // Jquery Core
   script(src="/javascript/lib/jquery.min.js")
@@ -147,7 +151,7 @@ script.
     })
   };
 
-  $("#menuToggle").click(function(e) {
+  $("#menuToggle, #sidebarClose").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 

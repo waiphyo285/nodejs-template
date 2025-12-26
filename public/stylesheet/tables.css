@@ -1,0 +1,221 @@
+/* Basic Table Styles */
+.table {
+    margin: 0 !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+
+.table thead th {
+    background-color: rgb(240, 240, 240) !important;
+    border-top: none;
+    border-bottom: 1px solid #f1f5f9 !important;
+    color: #64748b;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.025em;
+    font-weight: 700;
+    padding: 0.625rem 1.75rem 0.625rem 1rem !important;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+}
+
+.table td {
+    padding: 0.625rem 1rem !important;
+    vertical-align: middle;
+    border-top: 1px solid #f8fafc !important;
+    color: #475569;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8fafc;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* DataTables Layout & Fixes */
+.dataTables_filter {
+    display: none !important;
+}
+
+.dataTables_scrollHead {
+    margin-bottom: 0 !important;
+    background-color: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.dataTables_scrollHeadInner,
+.dataTables_scrollHeadInner table {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 52px !important;
+}
+
+.dataTables_scrollBody {
+    border: none !important;
+    margin-top: -1px !important;
+    padding: 0 !important;
+}
+
+table.dataTable {
+    margin: 0 !important;
+    border-spacing: 0 !important;
+    border-collapse: collapse !important;
+    width: 100% !important;
+}
+
+/* DataTables Icons Hiding */
+table.dataTable thead th.sorting:before,
+table.dataTable thead th.sorting:after,
+table.dataTable thead th.sorting_asc:before,
+table.dataTable thead th.sorting_asc:after,
+table.dataTable thead th.sorting_desc:before,
+table.dataTable thead th.sorting_desc:after,
+.dataTables_scrollBody thead th::before,
+.dataTables_scrollBody thead th::after {
+    display: none !important;
+    content: none !important;
+    background-image: none !important;
+}
+
+/* Custom Sorting Icons */
+.dataTables_scrollHead table.dataTable thead th {
+    position: relative !important;
+    padding-right: 1.5rem !important;
+}
+
+.dataTables_scrollHead table.dataTable thead th::after {
+    position: absolute !important;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.85rem;
+    line-height: 1;
+    color: #64748b;
+    display: block !important;
+    transition: opacity 0.2s ease;
+}
+
+.dataTables_scrollHead table.dataTable thead th.sorting::after {
+    opacity: 0.3;
+}
+
+.dataTables_scrollHead table.dataTable thead th.sorting_asc::after {
+    opacity: 1;
+    color: var(--primary) !important;
+}
+
+.dataTables_scrollHead table.dataTable thead th.sorting_desc::after {
+    opacity: 1;
+    color: var(--primary) !important;
+}
+
+/* Hidden header fixes for scroll mode */
+.dataTables_scrollBody thead {
+    visibility: collapse !important;
+}
+
+.dataTables_scrollBody thead tr {
+    height: 0 !important;
+    visibility: hidden !important;
+}
+
+.dataTables_scrollBody thead th {
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Pagination & Footer */
+.dataTables_length {
+    margin-top: 1rem;
+    font-size: 0.8125rem;
+    color: #64748b;
+}
+
+.dataTables_length select {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 4px !important;
+    padding: 0.25rem 0.5rem !important;
+    margin: 0 0.5rem !important;
+    height: auto !important;
+    outline: none !important;
+    background-color: #ffffff;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    padding-top: 1rem !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.dataTables_wrapper .dataTables_info {
+    padding-top: 1rem !important;
+    color: #64748b !important;
+    font-size: 0.8125rem;
+}
+
+.dataTables_wrapper .btn.material-button {
+    background: white !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #64748b !important;
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    margin: 0 2px !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+@media (max-width: 576px) {
+    .dataTables_wrapper .dataTables_paginate {
+        justify-content: center !important;
+        margin-top: 1rem;
+    }
+
+    .dataTables_wrapper .dataTables_info {
+        text-align: center !important;
+    }
+}
+
+.dataTables_wrapper .btn.material-button.active {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: white !important;
+}
+
+/* Responsive Table Controls */
+@media (max-width: 768px) {
+    #tableButton {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    #tableButton .mr-auto {
+        margin-right: 0 !important;
+        margin-bottom: 1rem;
+    }
+
+    #tableButton .btn-group {
+        width: 100%;
+        display: flex;
+    }
+
+    #tableButton .btn-group .btn {
+        flex: 1;
+    }
+
+    /* Fix title header on mobile */
+    .d-flex[style*="height: 42px"] {
+        height: auto !important;
+        flex-direction: column;
+        align-items: flex-start !important;
+        margin-bottom: 1rem;
+    }
+}

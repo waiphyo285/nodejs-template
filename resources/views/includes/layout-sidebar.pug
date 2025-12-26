@@ -1,9 +1,11 @@
 #sidebar-wrapper
-  .sidebar-head
-    h5.d-none.d-md-block
+  .sidebar-head.d-flex.align-items-center.justify-content-center
+    button#sidebarClose.btn.d-lg-none(type="button" style="position: absolute; left: 10px; color: white;")
+      i.bi.bi-x-lg
+    h5.d-none.d-md-block.mb-0
       | !{app.NAME}
       small  !{app.V_NAME}
-    h5.d-md-none.d-block
+    h5.d-md-none.d-block.mb-0
       | !{app.ALTN}
 
   .list-group.list-group-flush
@@ -16,7 +18,7 @@
             -var isActive = (programObj.active == true) ? "active" : undefined;  
             a.list-group-item.list-group-item-action.list-group-item-menu(href=programObj.url, class=isActive)
               span(class=programObj.icon)
-              span.d-none.d-lg-inline.pl-1  !{programObj.title}
+              span.pl-1  !{programObj.title}
             span.sr-only (current)
 
           else
@@ -25,7 +27,7 @@
             
             a.list-group-item.list-group-item-action.collapsed(href='#'+programObj.menuid data-toggle='collapse' data-target='#'+programObj.menuid)
               span(class=programObj.icon)
-              span.d-none.d-lg-inline.pl-1  !{programObj.title}
+              span.pl-1  !{programObj.title}
               span.float-right(class=iconType)
 
             div.collapse(aria-expanded='false'  class=isShow id=programObj.menuid)
@@ -38,4 +40,4 @@
                     li.nav-item(id=subMenuObj.menuid)
                       a.list-group-item.list-group-item-action.list-group-item-menu(href=subMenuObj.url class=isActive)
                         span(class=subMenuObj.icon)
-                        span.d-none.d-lg-inline.pl-1  !{subMenuObj.title}  
+                        span.pl-1  !{subMenuObj.title}  

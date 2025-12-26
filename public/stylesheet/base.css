@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+
+:root {
+    --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+        0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --border-radius-sm: 6px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@font-face {
+    font-family: 'Questrial Sagar', 'Questrial', 'Ubuntu Mono', monospace;
+    src: url('/fonts/Sagar/Release/MyanmarSagar.ttf') format('truetype');
+}
+
+body {
+    font-size: 14px;
+    font-family: 'Inter', 'Questrial Sagar', 'Questrial', sans-serif;
+    background-color: #f8fafc;
+    color: var(--text-black);
+}
+
+/* Scrollbar  */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Text selection */
+::selection {
+    color: var(--text-white);
+    background: var(--primary);
+}
+
+/* Common Focus States */
+input:focus,
+.form-control:focus {
+    outline: none !important;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(21, 165, 181, 0.2);
+}
+
+.btn {
+    border-radius: var(--border-radius-sm);
+    font-weight: 500;
+    transition: var(--transition-base);
+}
+
+.btn:focus,
+.btn:active {
+    opacity: 0.8;
+    box-shadow: 0 0 0 3px rgba(21, 165, 181, 0.2) !important;
+}
+
+/* Preloader */
+.preloader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/images/preloader/Ripple-100px.gif') 50% 50% no-repeat #f8fafc;
+}

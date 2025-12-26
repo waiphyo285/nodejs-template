@@ -1,0 +1,241 @@
+/* Main Stats Cards */
+.card-stats {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-base);
+    overflow: hidden;
+}
+
+.card-stats:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+}
+
+.card-stats .icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.bg-light-success {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+}
+
+.bg-light-primary {
+    background: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+}
+
+.bg-light-info {
+    background: rgba(23, 162, 184, 0.1);
+    color: #17a2b8;
+}
+
+.bg-light-warning {
+    background: rgba(255, 193, 7, 0.1);
+    color: #ffc107;
+}
+
+/* Status Check Card */
+.status-card {
+    border: none;
+    background: white;
+    border-radius: var(--border-radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-base);
+}
+
+.status-card:hover {
+    box-shadow: var(--hover-shadow);
+}
+
+/* Dropdowns */
+.dropdown-menu {
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.dropdown-menu-right {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.dropdown-item {
+    border-radius: var(--border-radius-sm);
+    padding: 0.6rem 1rem;
+    font-weight: 500;
+    color: #475569;
+    transition: var(--transition-base);
+}
+
+.dropdown-item:hover {
+    background-color: #f1f5f9;
+    color: var(--primary);
+}
+
+.dropdown-divider {
+    border-top: 1px solid #f1f5f9;
+    margin: 0.5rem 0;
+}
+
+/* Tabs and Content */
+.nav-tabs {
+    border-bottom: 2px solid #f1f5f9;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: #64748b;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    transition: var(--transition-base);
+    position: relative;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary);
+    background: transparent;
+    border: none;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary) !important;
+    background: transparent !important;
+    border: none !important;
+}
+
+.nav-tabs .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+}
+
+.tab-content {
+    padding-top: 1.5rem;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    padding: 0;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    background: transparent;
+}
+
+.breadcrumb-item a {
+    color: #64748b;
+    transition: var(--transition-base);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: '/';
+    color: #cbd5e1;
+}
+
+/* Modern Accordion */
+#accordion {
+    border: 1px solid #e2e8f0 !important;
+    border-radius: var(--border-radius-md) !important;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+#accordion .bg-light {
+    background-color: #f8fafc !important;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 1rem 1.25rem !important;
+    transition: var(--transition-base);
+}
+
+#accordion h5 {
+    font-weight: 600 !important;
+    color: #1e293b !important;
+    display: flex;
+    align-items: center;
+}
+
+#accordion h5 span {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+#accordion h5 i {
+    margin-right: 0.75rem;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+    color: var(--primary);
+}
+
+#accordion span[aria-expanded="true"] i {
+    transform: rotate(0deg);
+}
+
+#accordion span[aria-expanded="false"] i {
+    transform: rotate(-90deg);
+}
+
+#accordion .collapse.show {
+    border-top: none;
+}
+
+#accordion .card-body {
+    padding: 1.5rem;
+}
+
+/* Floating Contact Button */
+.float-content {
+    position: fixed;
+    left: 30px;
+    bottom: 30px;
+    z-index: 2000;
+}
+
+.float-phone {
+    width: 48px;
+    height: 48px;
+    background: #22c55e !important;
+    color: white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(86, 255, 148, 0.4) !important;
+    transition: var(--transition-base) !important;
+    text-decoration: none !important;
+}
+
+.float-phone:hover {
+    transform: scale(1.1) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(86, 255, 148, 0.5) !important;
+    background: #16a34a !important;
+}
+
+.float-phone i {
+    font-size: 1.5rem;
+}
+
+hr {
+    border-top: 1px solid #f1f5f9;
+}
