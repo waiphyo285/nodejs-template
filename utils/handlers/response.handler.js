@@ -1,4 +1,5 @@
 const config = require('@config/index')
+const utils = require('@utils/index')
 const { getProgram } = require('./access-user.handler')
 const { getContent } = require('./get-content.handler')
 
@@ -15,9 +16,10 @@ const formatCastError = (err) => {
 }
 
 const formatValidationError = (err) => {
-    let message = 'Invalid property or value.'
     const key = Object.keys(err.errors)
-    message = `Invalid ${err.errors[key[0]].path}: ${err.errors[key[0]].value}.`
+    let message = `Invalid ${err.errors[key[0]].path}: ${
+        err.errors[key[0]].value
+    }.`
     if (err.errors[key[0]] && err.errors[key[0]].properties) {
         message = err.errors[key[0]].properties.message
     }
@@ -55,11 +57,11 @@ const renderPage = async (user, pages, res) => {
     })
 }
 
-const handleServiceResponse = (resultPromise, utils, res) => {
+const handleServiceResponse = (resultPromise, res) => {
     const locales = res.locals.i18n.translations
     resultPromise
         .then((data) => {
-            return buildServiceResponse(data, utils, locales)
+            return buildServiceResponse(data, locales)
         })
         .then((response) => {
             // iamlog.info('Handle response ', JSON.stringify(response))
@@ -72,8 +74,8 @@ const handleServiceResponse = (resultPromise, utils, res) => {
         })
 }
 
-const buildServiceResponse = (data, utils, locales) => {
-    const create_response = !utils(data)
+const buildServiceResponse = (data, locales) => {
+    const create_response = !utils.isEmptyObject(data)
         ? createApiResponse(data.http_code || 200, { data }, locales)
         : createApiResponse(data.http_code || 400, {}, locales)
     return create_response

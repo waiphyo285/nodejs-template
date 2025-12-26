@@ -1,136 +1,123 @@
-<img src="./public/images/readme/readme-cover.jpg">
+# Node.js API Template
 
-## Node.js API Template
+<img src="./public/images/readme/readme-cover.jpg" />
 
-### Overview
+A **production-ready Node.js backend template** built with **Clean Architecture** principles to keep your codebase:
 
-A production-ready Node.js API template built using **Uncle Bob’s Clean Architecture** to ensure your codebase remains **testable, maintainable, scalable**, and independent of frameworks and external services.
+-   Maintainable
+-   Scalable
+-   Testable
+-   Framework-independent
 
--   **Inspired by:** [https://mannhowie.com/clean-architecture-node](https://mannhowie.com/clean-architecture-node)
--   **Reference:** [https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+Inspired by industry best practices and Uncle Bob’s Clean Architecture.
 
-## Clean Architecture Overview
-
-Clean Architecture focuses on clear separation of concerns, ensuring:
-
--   **Independence from frameworks**
--   **Easy testability**
--   **Database agnostic**
--   **Reusable across UI/API/CLI**
--   **Minimal coupling to external systems**
-
-### Architecture Layers
-
-This project implements a **4-layer clean architecture**:
+## 🧠 Architecture Overview
 
 ```
-┌─────────────────────────────────────────────────────────┐
-│                    PRESENTATION LAYER                   │
-│  (Routes, Controllers, HTTP Middleware, Serializers)    │
-└─────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────┐
-│                  APPLICATION LAYER                      │
-│  (Use Cases, Orchestration, Business Flow)              │
-└─────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────┐
-│                    DOMAIN LAYER                         │
-│  (Entities, Services, Business Rules, Interfaces)       │
-└─────────────────────────────────────────────────────────┘
-                            ↓
-┌─────────────────────────────────────────────────────────┐
-│                 INFRASTRUCTURE LAYER                    │
-│  (Repositories, Database, External Services)            │
-└─────────────────────────────────────────────────────────┘
+API Routes / Page Routes
+            │
+            ▼
+        Controllers
+            │
+            ▼
+        Use Cases
+            │
+            ▼
+      Domain Services
+            │
+            ▼
+        Repositories
+            │
+            ▼
+        Database(s)
 ```
 
-## Key Benefits
+This project follows a layered design ensuring clear separation of concerns:
 
-### ✅ Testability
+### **Presentation Layer**
 
-Business logic can be tested without Express, DB, or external tools.
+Routes, Controllers, Middleware, Serializers
 
-```javascript
-describe('Create User Use Case', () => {
-    it('creates a user', async () => {
-        const repo = { save: jest.fn() }
-        const useCase = new CreateUserUseCase(repo)
-        await useCase.execute({ name: 'John', email: 'john@example.com' })
-        expect(repo.save).toHaveBeenCalled()
-    })
-})
-```
+### **Application Layer**
 
-### ✅ Reusability
+Use Cases, Orchestration, Business Flow
 
-Same use case can run in API, CLI, Jobs:
+### **Domain Layer**
 
-```javascript
-const useCase = container.get('createUserUseCase')
-```
+Entities, Business Rules, Core Services, Interfaces
 
-### ✅ Framework Independence
+### **Infrastructure Layer**
 
-Swap:
+Repositories, Databases, External Integrations
 
--   Express → Fastify
--   MongoDB → PostgreSQL
--   Without touching business logic
+## ⭐ Why Use This Template?
 
-### ✅ Scalability
+### ✅ Testable
 
-Easy feature isolation and microservice extraction.
+Business logic does not depend on Express, databases, or external services.
 
-### ✅ Maintainability
+### ✅ Reusable
 
-Clear structure, easy onboarding, reduced duplication.
+Use the same use cases in API, CLI, background workers, jobs, etc.
 
-## Technology Stack
+### ✅ Framework Independent
 
-### Core
+Easily swap:
 
--   **Express.js** – Web framework
+-   Express → Fastify / Nest
+-   MongoDB → PostgreSQL / MySQL
+-   Redis / S3 / Firebase
+    without touching core logic.
 
-### Databases
+### ✅ Scalable
 
--   **Sequelize** – SQL ORM (MySQL, PostgreSQL, MariaDB, SQLite)
--   **Mongoose** – MongoDB ODM
+Clean structure supports large applications and microservice evolution.
 
-### Security
+### ✅ Maintainable
+
+Clear conventions = easy onboarding and long-term health.
+
+## 🧰 Technology Stack
+
+**Core**
+
+-   Node.js
+-   Express.js
+
+**Databases**
+
+-   Sequelize (SQL)
+-   Mongoose (MongoDB)
+
+**Security**
 
 -   Passport.js
 -   JWT
 -   CSRF
 -   Rate limiting
 
-### File Upload
+**Extras**
 
--   Multer
+-   Multer file upload
+-   Socket support
+-   Redis cache
+-   Bootstrap frontend support
+-   Mocha tests
 
-### Frontend
+## 📦 Requirements
 
--   Bootstrap
-
-### Testing
-
--   Mocha
-
-## Prerequisites
-
-Install:
-
--   Node.js v14+
+-   Node.js 14+
 -   MongoDB
 -   MySQL
 -   Redis
--   npm / yarn
 
-## Installation
+## 🚀 Getting Started
 
-```bash
+```
 git clone https://github.com/waiphyo285/nodejs-template.git
-cd nodejs-template && npm install && cp .env.example .env
+cd nodejs-template
+npm install
+cp .env.example .env
 npm run dev
 ```
 
@@ -140,59 +127,10 @@ Visit:
 http://localhost:8765
 ```
 
-## Scripts
+## 🤝 Contributing
 
-### Development
+Contributions, issues, and feature requests are welcome.
 
-```bash
-npm run dev
-```
-
-### Production
-
-```bash
-npm run start
-```
-
-### Tests
-
-```bash
-npm run test
-```
-
-### CLI
-
-```bash
-node index
-node index --index
-node index --show=623210497fc2cb28840d1448
-```
-
-## API Documentation
-
-Postman Collection:
-
-```
-https://documenter.getpostman.com/view/10018411/2s83mbr5iK
-```
-
-## Best Practices Implemented
-
--   Dependency Injection
--   Repository Pattern
--   Use Case Pattern
--   Service Layer
--   Middleware Structure
--   Centralized Error Handling
--   Validation Layer
--   Logging
--   Security Layer
--   Consistent Naming
-
-## Contributing
-
-PRs welcome!
-
-## License
+## 📜 License
 
 MIT License

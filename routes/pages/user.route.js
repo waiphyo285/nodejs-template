@@ -1,4 +1,3 @@
-const utils = require('@utils/index')
 const container = require('@infrastructure/container/bootstrap')
 const {
     renderPage,
@@ -51,7 +50,7 @@ class UserPageHandler {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static update(req, res) {
@@ -65,7 +64,7 @@ class UserPageHandler {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 }
 

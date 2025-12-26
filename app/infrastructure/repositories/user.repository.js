@@ -35,7 +35,7 @@ class UserRepositoryMongoDB extends UserRepository {
     }
 
     async findBy(query) {
-        const { filter } = await schema.getFilterQuery(query)
+        const { filter, sort } = await schema.getFilterQuery(query)
         return UserModel.find(filter)
             .populate({
                 path: 'level_id',

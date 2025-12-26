@@ -1,7 +1,6 @@
 const serialize = require('./serializer')
 const { handleServiceResponse } = require('@utils/handlers/response.handler')
 const container = require('@infrastructure/container/bootstrap')
-const utils = require('@utils/index')
 
 class StudentController {
     static find(req, res, next) {
@@ -12,7 +11,7 @@ class StudentController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static findById(req, res, next) {
@@ -25,7 +24,7 @@ class StudentController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static findBy(req, res, next) {
@@ -36,7 +35,7 @@ class StudentController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static create(req, res, next) {
@@ -47,7 +46,7 @@ class StudentController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static update(req, res, next) {
@@ -63,7 +62,7 @@ class StudentController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static drop(req, res, next) {
@@ -76,7 +75,7 @@ class StudentController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 }
 

@@ -1,4 +1,3 @@
-const utils = require('@utils/index')
 const container = require('@infrastructure/container/bootstrap')
 const programMenu = require('@resources/lang/menus/menu-en.json')
 const {
@@ -57,7 +56,6 @@ class UserRolePageHandler {
             }
         }
 
-
         const pages = {
             data: data.data || {},
             runPage: 'pages/user-role-entry',
@@ -77,7 +75,7 @@ class UserRolePageHandler {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static update(req, res) {
@@ -91,7 +89,7 @@ class UserRolePageHandler {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 }
 

@@ -29,7 +29,7 @@ class UserRoleRepositoryMongoDB extends UserRoleRepository {
     }
 
     async findBy(query) {
-        const { filter } = await schema.getFilterQuery(query)
+        const { filter, sort } = await schema.getFilterQuery(query)
         return UserRoleModel.find(filter)
             .populate({
                 path: 'level_id',

@@ -1,7 +1,6 @@
 const serialize = require('./serializer')
 const { handleServiceResponse } = require('@utils/handlers/response.handler')
 const container = require('@infrastructure/container/bootstrap')
-const utils = require('@utils/index')
 
 class UserRoleController {
     static config(req, res, next) {
@@ -12,7 +11,7 @@ class UserRoleController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static find(req, res, next) {
@@ -23,7 +22,7 @@ class UserRoleController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static findById(req, res, next) {
@@ -36,7 +35,7 @@ class UserRoleController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static findBy(req, res, next) {
@@ -47,7 +46,7 @@ class UserRoleController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static create(req, res, next) {
@@ -58,7 +57,7 @@ class UserRoleController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static update(req, res, next) {
@@ -74,7 +73,7 @@ class UserRoleController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static drop(req, res, next) {
@@ -87,7 +86,7 @@ class UserRoleController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 }
 

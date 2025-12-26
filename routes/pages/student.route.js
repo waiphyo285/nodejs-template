@@ -47,7 +47,7 @@ class StudentPageHandler {
                     }
                     throw new Error(result.error)
                 })
-                handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+                handleServiceResponse(resultPromise, res)
             })
             .catch((error) => {
                 console.error('Error removing images during create:', error)
@@ -60,7 +60,7 @@ class StudentPageHandler {
                     }
                     throw new Error(result.error)
                 })
-                handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+                handleServiceResponse(resultPromise, res)
             })
     }
 
@@ -79,7 +79,7 @@ class StudentPageHandler {
                         }
                         throw new Error(result.error)
                     })
-                handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+                handleServiceResponse(resultPromise, res)
             })
             .catch((error) => {
                 console.error('Error removing images during update:', error)
@@ -94,7 +94,7 @@ class StudentPageHandler {
                         }
                         throw new Error(result.error)
                     })
-                handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+                handleServiceResponse(resultPromise, res)
             })
     }
 }

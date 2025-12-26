@@ -18,11 +18,11 @@ class StudentRepositoryMySQL extends StudentRepository {
 
         const condition = filter.search
             ? {
-                [Op.or]: [
-                    { name: { [Op.like]: `%${filter.search}%` } },
-                    { grade: { [Op.like]: `%${filter.search}%` } },
-                ],
-            }
+                  [Op.or]: [
+                      { name: { [Op.like]: `%${filter.search}%` } },
+                      { grade: { [Op.like]: `%${filter.search}%` } },
+                  ],
+              }
             : {}
 
         const result = await Student.findAndCountAll({

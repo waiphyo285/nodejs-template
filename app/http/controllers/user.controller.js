@@ -2,7 +2,6 @@ const serialize = require('./serializer')
 const { handleServiceResponse } = require('@utils/handlers/response.handler')
 const container = require('@infrastructure/container/bootstrap')
 const socketClient = require('../../socket-client')
-const utils = require('@utils/index')
 
 class UserController {
     static find(req, res, next) {
@@ -13,7 +12,7 @@ class UserController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static findById(req, res, next) {
@@ -26,7 +25,7 @@ class UserController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static create(req, res, next) {
@@ -37,7 +36,7 @@ class UserController {
             }
             throw new Error(result.error)
         })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static remove(req, res, next) {
@@ -51,7 +50,7 @@ class UserController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static updateWithPass(req, res, next) {
@@ -67,7 +66,7 @@ class UserController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static updateWithoutPass(req, res, next) {
@@ -85,7 +84,7 @@ class UserController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 
     static drop(req, res, next) {
@@ -98,7 +97,7 @@ class UserController {
                 }
                 throw new Error(result.error)
             })
-        handleServiceResponse(resultPromise, utils.isEmptyObject, res)
+        handleServiceResponse(resultPromise, res)
     }
 }
 
