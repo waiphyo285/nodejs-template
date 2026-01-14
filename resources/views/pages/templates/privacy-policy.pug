@@ -1,0 +1,147 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Privacy Policy - !{app.NAME}
+
+    style.
+      body {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0 auto;
+        padding: 2rem;
+        max-width: 900px;
+        color: #333;
+        background-color: #fff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      .contact {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+
+      .last-updated {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 2rem;
+      }
+
+      .notice {
+        background: #fff3cd;
+        color: #856404;
+        padding: 1rem;
+        border: 1px solid #ffeeba;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+      }
+
+      body.dark-theme {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+
+      .dark-theme h1,
+      .dark-theme h3 {
+        color: #ffffff;
+      }
+
+      .dark-theme h1 {
+        border-bottom-color: #333;
+      }
+
+      .dark-theme .contact {
+        background: #1e1e1e;
+        color: #ccc;
+      }
+
+      .dark-theme .last-updated {
+        color: #999;
+      }
+
+      .dark-theme .notice {
+        background: #2c2512;
+        color: #e9c46a;
+        border-color: #443c1a;
+      }
+
+  body(class=theme === 'dark' ? 'dark-theme' : '')
+    h1 Privacy Policy
+    p.last-updated Last updated: January 13, 2026
+
+    .notice
+      strong NOTE:
+      |  This is a template privacy policy provided as a starting point. It must be customized to reflect your specific data collection, usage, and storage practices.
+
+    p This Privacy Policy describes how your personal information is collected, used, and shared when you visit or use !{app.NAME} (the "Service").
+
+    h2 1. Information We Collect
+    p We may collect several types of information from and about users of our Service, including:
+    ul
+      li **Identity Data:** Username, full name, and professional roles.
+      li **Contact Data:** Email addresses provided during registration or support inquiries.
+      li **Technical Data:** IP addresses, browser types, and operating systems collected during server interactions.
+      li **Usage Data:** Information about how you navigate and interact with the administrative features of the Service.
+
+    h2 2. How We Use Your Information
+    p We use the information we collect to:
+    ul
+      li Provide and maintain the functionality of the administrator portal.
+      li Authenticate users and manage permissions (RBAC).
+      li Detect and prevent security threats or unauthorized access.
+      li Improve the performance and user experience of the platform.
+
+    h2 3. Data Storage and Security
+    p We utilize industry-standard databases (such as MySQL and MongoDB) to ensure the integrity and accessibility of your data. We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, loss, or alteration.
+
+    h2 4. Cookies
+    p We use essential cookies to manage user sessions and maintain authentication states. You can modify your browser settings to refuse cookies, but this may limit your ability to use certain features of the Service.
+
+    h2 5. Third-Party Services
+    p Generally, we do not share your personal information with third parties except as necessary to provide the Service or comply with legal requirements. If you integrate external services (e.g., Firebase, Redis), please refer to their respective privacy policies.
+
+    h2 6. Your Rights
+    p Users have the right to access, update, or request the deletion of their personal data. These requests can typically be handled through the account settings or by contacting the system administrator.
+
+    .contact
+      h4 Questions or Contact
+      p If you have any questions about this Privacy Policy or wish to report an issue, please contact us:
+      p Email: !{app.CONTACT || 'waiphyo.dev@gmail.com'}
+      p Project Source: !{app.URL || 'https://github.com/waiphyo285/nodejs-template'}

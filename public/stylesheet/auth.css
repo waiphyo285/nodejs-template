@@ -1,0 +1,133 @@
+body {
+    background-color: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 480px;
+    padding: 2rem;
+}
+
+.login-div {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+}
+
+.head {
+    text-align: center;
+}
+
+.logo {
+    width: 92px;
+    height: 92px;
+    margin-bottom: 1.5rem;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.signin-button {
+    width: 100%;
+    height: 44px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-base);
+    box-shadow: 0 4px 6px -1px rgba(21, 165, 181, 0.2);
+    margin-top: 1rem;
+}
+
+.signin-button:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(21, 165, 181, 0.3);
+}
+
+.signin-button i {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+/* Custom Radio Buttons */
+label.radio {
+    cursor: pointer;
+    flex: 1;
+    margin: 0 4px;
+}
+
+label.radio input {
+    display: none;
+}
+
+label.radio span {
+    display: block;
+    padding: 0.6rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    color: #64748b;
+    border: 1px solid #e2e8f0;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    transition: var(--transition-base);
+    background: #ffffff;
+    text-align: center;
+}
+
+label.radio input:checked+span {
+    color: var(--primary);
+    background: #f0f9fa;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+#error-msg {
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+    color: #ef4444;
+    font-weight: 500;
+}
+
+.fixed-bottom {
+    background-color: transparent !important;
+    border-top: none !important;
+    padding-bottom: 2rem !important;
+}
+
+.fixed-bottom a {
+    color: #64748b;
+    font-size: 0.75rem;
+    transition: var(--transition-base);
+}
+
+.fixed-bottom a:hover {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.fixed-bottom p {
+    color: #94a3b8;
+    font-size: 0.75rem;
+}
+
+.iti {
+    width: 100% !important;
+}

@@ -1,0 +1,80 @@
+div.modal.fade#dialogSetTheme(tabindex='-1', role='dialog', aria-labelledby='dialogSetTheme')
+  div.modal-dialog.modal-dialog-centered.modal-lg.custom-modal-lg(role='document')
+    div.modal-content
+      div.modal-header
+        h5.modal-title !{content.modal.change_theme}
+        button.close(type='button', data-dismiss='modal', aria-label='Close')
+          span(aria-hidden='true') &times;
+      
+      div.modal-body
+        div#theme-container.d-flex.flex-wrap.justify-content-center
+          .theme.default
+            label
+              input(type='radio' name="theme_name" value='default' checked=(user.theme === 'default'))
+              span Default
+          .theme.action
+            label
+              input(type='radio' name="theme_name" value='action' checked=(user.theme === 'action'))
+              span Action
+          .theme.comedy
+            label
+              input(type='radio' name="theme_name" value='comedy' checked=(user.theme === 'comedy'))
+              span Comedy
+          .theme.crime
+            label
+              input(type='radio' name="theme_name" value='crime' checked=(user.theme === 'crime'))
+              span Crime
+          .theme.history
+            label
+              input(type='radio' name="theme_name" value='history' checked=(user.theme === 'history'))
+              span History
+          .theme.reality
+            label
+              input(type='radio' name="theme_name" value='reality' checked=(user.theme === 'reality'))
+              span Reality
+          .theme.news
+            label
+              input(type='radio' name="theme_name" value='news' checked=(user.theme === 'news'))
+              span News
+          .theme.sports
+            label
+              input(type='radio' name="theme_name" value='sports' checked=(user.theme === 'sports'))
+              span Sports
+      
+      div.modal-footer.justify-content-md-center
+        button.btn.material-button.material-secondary#dialogCancel(type='button', data-dismiss='modal')
+          |  !{content.common.close}
+        
+        button.btn.material-button.material-primary#dialogTheme(type='button', data-dismiss='modal')
+          i.bi.bi-save
+          |  !{content.common.save}
+
+script.
+  $(document).ready(function() {
+    $("#dialogTheme").on('click', function(){
+      const currentTheme = '!{user.theme}';
+      const newTheme = $('input[name=theme_name]:checked').val();
+
+      if (newTheme === currentTheme) {
+        return 
+      }
+      
+      modalServiceApi({
+        type: "PUT",
+        data: { theme: newTheme },
+        url: `/api/${v1}/edit-user/${userId}`,
+      }, function (data) {
+        if (data.code == 200) {
+          localStoreService({
+            key: 'theme', 
+            value: newTheme, 
+            method: 'set' 
+          })
+          
+          setTimeout(()=> {
+            window.location.reload();
+          }, 3000);
+        }
+      })
+    })
+  });

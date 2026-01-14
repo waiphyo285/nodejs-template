@@ -1,0 +1,48 @@
+#sidebar-wrapper
+  .sidebar-head.d-flex.align-items-center.justify-content-center
+    button#sidebarClose.btn.d-lg-none(type="button" style="position: absolute; left: 10px; color: white;")
+      i.bi.bi-x-lg
+    h5.d-none.d-md-block.mb-0
+      | !{app.NAME}
+      small  !{app.VERSION}
+    h5.d-md-none.d-block.mb-0
+      | !{app.ALTN}
+
+  .list-group.list-group-flush
+    if program && program.length > 0
+      each programObj in program
+        if programObj.access == true
+          -var subMenuLength = programObj.submenu.length;
+
+          if !(subMenuLength > 0)
+            -var isActive = (programObj.active == true) ? "active" : undefined;  
+            a.list-group-item.list-group-item-action.list-group-item-menu(href=programObj.url, class=isActive)
+              span(class=programObj.icon)
+              span.pl-1  !{programObj.title}
+            span.sr-only (current)
+
+          else
+            -var iconType = (programObj.active == true) ? "bi bi-chevron-up" : "bi bi-chevron-down";
+            -var isShow = (programObj.active == true) ? "show" : undefined;
+            
+            a.list-group-item.list-group-item-action.collapsed(href='#'+programObj.menuid data-toggle='collapse' data-target='#'+programObj.menuid)
+              span(class=programObj.icon)
+              span.pl-1  !{programObj.title}
+              span.float-right(class=iconType)
+
+            div.collapse(aria-expanded='false'  class=isShow id=programObj.menuid)
+              each subMenuObj in programObj.submenu
+                -var isActive = (subMenuObj.active == true) ? "active" : undefined;
+                -var isAccess = (subMenuObj.access == true) ? true : false;
+                
+                if (isAccess)
+                  ul.flex-column.nav
+                    li.nav-item(id=subMenuObj.menuid)
+                      a.list-group-item.list-group-item-action.list-group-item-menu(href=subMenuObj.url class=isActive)
+                        span(class=subMenuObj.icon)
+                        span.pl-1  !{subMenuObj.title}  
+
+  .sidebar-footer.mt-auto
+    .px-3.py-3.text-center
+      small.text-muted Developed by 
+        a.text-primary.font-weight-bold(href="https://github.com/waiphyo285" target="_blank") waiphyo285

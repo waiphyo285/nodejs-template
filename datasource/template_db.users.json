@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "694b5ce9cc0ad275d407f40f"
+  },
+  "level_id": null,
+  "user_type": "developer",
+  "theme": "default",
+  "locale": "en_US",
+  "tz_offset": "-420",
+  "latmat": "",
+  "csrf": "",
+  "status": true,
+  "phone": "+9592212345",
+  "username": "admin",
+  "password": "$2b$10$gVPaGU3/vp94NhHeDZC2BuZDJqLzmS3bRmIXJ3MVSht/1dvavNbju",
+  "role": "developer",
+  "created_at": {
+    "$date": "2025-12-24T03:24:25.703Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-14T03:54:15.005Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "69661f33e7e2c959e8c70b73"
+  },
+  "level_id": null,
+  "user_type": "developer",
+  "theme": "default",
+  "locale": "en_US",
+  "tz_offset": "-420",
+  "latmat": "",
+  "csrf": "",
+  "status": true,
+  "phone": "+9592213334",
+  "username": "admin123",
+  "password": "$2b$10$LZlEafqujDwQdRI9TEXxpeJ21rK8T79N0sowvgnmw0TK4WFNGHr5y",
+  "role": "developer",
+  "created_at": {
+    "$date": "2026-01-13T10:32:19.785Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-13T10:32:19.785Z"
+  },
+  "__v": 0
+}]

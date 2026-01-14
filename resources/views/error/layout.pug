@@ -1,0 +1,42 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title #{status} - #{title}
+    
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="/stylesheet/error.css")
+    
+    // Favicon
+    link(rel="icon" type="image/png" sizes="32x32" href="/images/favicons/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="/images/favicons/favicon-16x16.png")
+
+  body
+    script(src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js")
+    
+    .error-container
+      .error-content
+        .error-visual
+          .error-code #{status}
+          lottie-player(
+            src=lottieUrl
+            style="width: 200px; height: 200px"
+            speed="1"
+            autoplay
+            loop
+          )
+        
+        .error-info
+          h1.error-title #{title}
+          p.error-message #{message}
+          
+          .error-actions
+            a.btn-error.btn-primary(href="/") Back to Dashboard
+            if status == 500
+              a.btn-error.btn-outline(href="mailto:waiphyo.dev@gmail.com") Report Issue
+            else
+              a.btn-error.btn-outline(href="javascript:history.back()") Go Back

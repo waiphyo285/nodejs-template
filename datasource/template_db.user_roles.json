@@ -1,0 +1,170 @@
+[{
+  "_id": {
+    "$oid": "694b97f8c570e071341160d1"
+  },
+  "owner_id": null,
+  "who_access": "developer",
+  "status": true,
+  "role": "owner",
+  "level": "Highest",
+  "program": [
+    {
+      "access": true,
+      "_id": {
+        "$oid": "69672e1897a65c3278f3b951"
+      },
+      "menuid": "dashboard",
+      "submenu": []
+    },
+    {
+      "access": false,
+      "_id": {
+        "$oid": "69672e1897a65c3278f3b952"
+      },
+      "menuid": "administrative",
+      "submenu": [
+        {
+          "access": false,
+          "read": false,
+          "edit": false,
+          "delete": false,
+          "_id": {
+            "$oid": "69672e1897a65c3278f3b953"
+          },
+          "menuid": "user"
+        },
+        {
+          "access": false,
+          "read": false,
+          "edit": false,
+          "delete": false,
+          "_id": {
+            "$oid": "69672e1897a65c3278f3b954"
+          },
+          "menuid": "role"
+        }
+      ]
+    },
+    {
+      "access": true,
+      "_id": {
+        "$oid": "69672e1897a65c3278f3b955"
+      },
+      "menuid": "academic",
+      "submenu": [
+        {
+          "access": true,
+          "read": true,
+          "edit": true,
+          "delete": true,
+          "_id": {
+            "$oid": "69672e1897a65c3278f3b956"
+          },
+          "menuid": "teacher"
+        },
+        {
+          "access": true,
+          "read": true,
+          "edit": true,
+          "delete": true,
+          "_id": {
+            "$oid": "69672e1897a65c3278f3b957"
+          },
+          "menuid": "student"
+        }
+      ]
+    }
+  ],
+  "created_at": {
+    "$date": "2025-12-24T07:36:24.115Z"
+  },
+  "updated_at": {
+    "$date": "2026-01-14T05:48:08.352Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "694ba5210cc02b7d10ae6257"
+  },
+  "owner_id": null,
+  "who_access": "developer",
+  "status": true,
+  "role": "owner",
+  "level": "hello",
+  "program": [
+    {
+      "access": true,
+      "_id": {
+        "$oid": "694ba5210cc02b7d10ae6258"
+      },
+      "menuid": "dashboard",
+      "submenu": []
+    },
+    {
+      "access": true,
+      "_id": {
+        "$oid": "694ba5210cc02b7d10ae6259"
+      },
+      "menuid": "administrative",
+      "submenu": [
+        {
+          "access": true,
+          "read": true,
+          "edit": true,
+          "delete": true,
+          "_id": {
+            "$oid": "694ba5210cc02b7d10ae625a"
+          },
+          "menuid": "user"
+        },
+        {
+          "access": true,
+          "read": true,
+          "edit": true,
+          "delete": true,
+          "_id": {
+            "$oid": "694ba5210cc02b7d10ae625b"
+          },
+          "menuid": "role"
+        }
+      ]
+    },
+    {
+      "access": true,
+      "_id": {
+        "$oid": "694ba5210cc02b7d10ae625c"
+      },
+      "menuid": "academic",
+      "submenu": [
+        {
+          "access": true,
+          "read": true,
+          "edit": true,
+          "delete": true,
+          "_id": {
+            "$oid": "694ba5210cc02b7d10ae625d"
+          },
+          "menuid": "teacher"
+        },
+        {
+          "access": true,
+          "read": true,
+          "edit": true,
+          "delete": true,
+          "_id": {
+            "$oid": "694ba5210cc02b7d10ae625e"
+          },
+          "menuid": "student"
+        }
+      ]
+    }
+  ],
+  "created_at": {
+    "$date": "2025-12-24T08:32:33.893Z"
+  },
+  "updated_at": {
+    "$date": "2025-12-24T08:32:33.893Z"
+  },
+  "__v": 0
+}]

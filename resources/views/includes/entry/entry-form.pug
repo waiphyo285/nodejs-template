@@ -1,0 +1,6 @@
+-var recordId = data._id || data.id;
+-var method = recordId ? "put" : "post";
+
+form#entryForm.entryForm.form-horizontal.form-validate(role='form' method=method, action=page.entry.url novalidate)
+  input.input-sm#recordId(type='hidden', name='id', value=recordId)
+  block inputs

@@ -1,0 +1,48 @@
+extends ../../includes/layout-main
+block content
+  main.border.rounded.mx-3.mb-5.p-3(role='main')
+    include ./../../includes/entry/entry-header
+
+    ul#myTab.nav.nav-tabs.mb-3(role='tablist')
+      li.nav-item(role='information')
+        button#information-tab.nav-link.active(data-toggle='tab' data-target='#information' type='button' role='tab' aria-controls='information' aria-selected='true')
+          i.bi.bi-info-circle
+          span.d-none.d-lg-block !{content.common.tab_info}
+      
+      li.nav-item.mx-1(role='privacy')
+        button#privacy-tab.nav-link(data-toggle='tab' data-target='#privacy' type='button' role='tab' aria-controls='privacy' aria-selected='false')
+          i.bi.bi-file-earmark-ruled
+          span.d-none.d-lg-block !{content.common.tab_privacy}
+          
+      //- li.nav-item(role='howtouse')
+      //-   button#how-to-use-tab.nav-link(data-toggle='tab' data-target='#how-to-use' type='button' role='tab' aria-controls='how-to-use' aria-selected='false')
+      //-     i.bi.bi-question-circle
+      //-     span.d-none.d-lg-block !{content.common.tab_howtouse}
+
+    include ./../../includes/entry/entry-form
+      block inputs
+        #myTabContent.tab-content
+          #information.tab-pane.fade.show.active(role='tabpanel' aria-labelledby='information-tab')
+            div.form-group.row
+              div.col-md-12.mb-3
+                textarea.form-control.content(name='app_info', rows='3')=data.app_info
+
+          #privacy.tab-pane.fade(role='tabpanel' aria-labelledby='privacy-tab')
+            div.form-group.row
+              div.col-md-12.mb-3
+                textarea.form-control.content1(name='app_policy', rows='3')=data.app_policy
+
+          #how-to-use.tab-pane.fade(role='tabpanel' aria-labelledby='how-to-use-tab')
+            div.form-group.row
+              div.col-md-12.mb-3
+                textarea.form-control.content2(name='how_to_use', rows='3')=data.how_to_use
+
+        include ./../../includes/entry/entry-btn
+
+  script(src='/javascript/pages/rich-text.js')
+
+  script.
+    $(document).ready(function() {
+      $('.content1').richText()
+      $('.content2').richText()
+    })

@@ -1,0 +1,72 @@
+extends ../includes/layout-main
+block content
+  -var recordId = data._id || data.id;
+
+  main.border.rounded.mx-3.mb-5.p-3(role='main')
+    .d-flex.justify-content-between.align-items-center.mb-4
+      h2.mb-0
+        span.ms-2 !{content.profile || 'My Account'}
+
+    .row
+      .col-lg-4.mb-4
+        .card.text-center
+          .card-body
+            .avatar-placeholder.mb-3
+              i.bi.bi-person-circle(style='font-size: 4rem; color: #6c757d;')
+            h5.card-title= data.username || 'User'
+            p.card-text.text-muted= data.phone || 'No phone'
+            .badge.bg-info= data.role || 'User'
+
+      .col-lg-8
+        .card
+          .card-header.bg-light
+            h5.mb-0 !{content.edit_profile || 'Edit Profile'}
+          .card-body
+            form#entryForm.entryForm.form-horizontal.form-validate(role='form' method='put' action='/api/v1/account' novalidate)
+              input.input-sm#recordId(type='hidden' name='id' value=recordId)
+
+              .form-group.row
+                .col-md-6.mb-3
+                  label.control-label(for='username') !{content.username || 'Username'} *
+                  input.form-control.input-sm#username(
+                    type='text'
+                    name='username'
+                    value=data.username
+                    maxlength='55'
+                    autocomplete='off'
+                    required
+                    autofocus
+                  )
+                  .invalid-feedback
+                    | Please fill out this field. It is required to proceed.
+
+                .col-md-6.mb-3
+                  label.control-label(for='phone') !{content.phone || 'Phone'} *
+                  input.form-control.input-sm#phone(
+                    type='tel'
+                    name='phone'
+                    value=data.phone
+                    pattern='[+,0][1-9]{1}[0-9]{1,2}[0-9]{4,12}'
+                    autocomplete='off'
+                    required
+                  )
+                  .invalid-feedback
+                    | Please fill out this field. It is required to proceed.
+
+              hr
+
+              .form-group.row
+                .col-md-6.mb-3
+                  label.control-label(for='theme') !{content.theme || 'Theme'}
+                  select.form-control.input-sm.custom-select#theme(name='theme')
+                    option(value='default' selected=data.theme === 'default') Default
+
+                .col-md-6.mb-3
+                  label.control-label(for='locale') !{content.language || 'Language'}
+                  select.form-control.input-sm.custom-select#locale(name='locale')
+                    option(value='en_US' selected=data.locale === 'en_US') English
+                    option(value='my_MM' selected=data.locale === 'my_MM') Myanmar
+
+              include ./../includes/entry/entry-btn
+
+    form#postSuccessForm(method='GET' action='/')

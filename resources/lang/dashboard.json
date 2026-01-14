@@ -1,0 +1,18 @@
+{
+    "en_US": {
+        "welcome": "Welcome back 👋",
+        "quick_link": "Quick links",
+        "total_1": "Total",
+        "total_2": "Total",
+        "total_3": "Total",
+        "total_4": "Total"
+    },
+    "my_MM": {
+        "welcome": "ကြိုဆိုပါ၏ 👋",
+        "quick_link": "ဆက်သွယ်ချက်များ",
+        "total_1": "စုစုပေါင်း",
+        "total_2": "စုစုပေါင်း",
+        "total_3": "စုစုပေါင်း",
+        "total_4": "စုစုပေါင်း"
+    }
+}

@@ -1,0 +1,4 @@
+mixin entryTitle(options)
+  -var title = page[options.titleKey].title;
+  div.entry-header.mr-auto(style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis")
+    h4.font-weight-semibold.my-2 !{title}

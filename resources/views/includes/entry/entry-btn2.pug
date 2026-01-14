@@ -1,0 +1,8 @@
+mixin entryButtons(options)
+  .d-flex.justify-content-center.fixed-bottom.bg-white.border-top.p-2
+    button.btn.material-button.material-secondary.m-1(type='button' onclick=`window.location.href='${page.list.url}'`)
+      |  !{content.common.cancel}
+      
+    button.btn.material-button.material-primary.m-1(type='submit', role='button', disabled=options.submitDisabled)
+      i.bi.bi-save
+      |  !{content.common.save}

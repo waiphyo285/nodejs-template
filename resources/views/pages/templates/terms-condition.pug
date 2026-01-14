@@ -1,0 +1,145 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Terms & Conditions - !{app.NAME}
+
+    style.
+      body {
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0 auto;
+        padding: 2rem;
+        max-width: 900px;
+        color: #333;
+        background-color: #fff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 1rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      .contact {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+      }
+
+      .last-updated {
+        color: #666;
+        font-style: italic;
+        margin-bottom: 2rem;
+      }
+
+      .notice {
+        background: #fff3cd;
+        color: #856404;
+        padding: 1rem;
+        border: 1px solid #ffeeba;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+      }
+
+      body.dark-theme {
+        background-color: #121212;
+        color: #e0e0e0;
+      }
+
+      .dark-theme h1,
+      .dark-theme h3 {
+        color: #ffffff;
+      }
+
+      .dark-theme h1 {
+        border-bottom-color: #333;
+      }
+
+      .dark-theme .contact {
+        background: #1e1e1e;
+        color: #ccc;
+      }
+
+      .dark-theme .last-updated {
+        color: #999;
+      }
+
+      .dark-theme .notice {
+        background: #2c2512;
+        color: #e9c46a;
+        border-color: #443c1a;
+      }
+
+  body(class=theme === 'dark' ? 'dark-theme' : '')
+    h1 Terms & Conditions
+    p.last-updated Last updated: January 13, 2026
+
+    .notice
+      strong NOTE:
+      |  These Terms and Conditions are a template provided for public use. Users should review and adapt them to comply with local laws and organizational requirements.
+
+    p By accessing or using the !{app.NAME} platform (the "Service"), you agree to be bound by these Terms and Conditions.
+
+    h2 1. Authorization and Use
+    p The Service is provided as an administrative template for organizational management. Use of the Service is limited to authorized users who have been granted access by a system administrator.
+
+    h2 2. Account Responsibility
+    p You are responsible for maintaining the confidentiality of your account credentials. You agree to notify the administrator immediately of any unauthorized use of your account or any other breach of security.
+
+    h2 3. Acceptable Use Policy
+    p You agree not to:
+    ul
+      li Use the Service for any illegal or unauthorized purpose.
+      li Attempt to bypass security measures or gain access to data for which you are not authorized.
+      li Upload malicious code, viruses, or any software that may harm the functionality of the Service.
+      li Use automated tools to harvest data from the portal without permission.
+
+    h2 4. Intellectual Property
+    p The Service and its original code, design, and features are protected by copyright and intellectual property laws. Users are granted a limited license to use the Service in accordance with these Terms and the project's specific licensing (e.g., MIT).
+
+    h2 5. Limitation of Liability
+    p !{app.NAME} and its contributors shall not be liable for any damages arising out of the use or inability to use the Service, including but not limited to data loss or inaccuracies resulting from user input.
+
+    h2 6. Modifications to Service
+    p We reserve the right to modify or discontinue the Service (or any part thereof) with or without notice at any time.
+
+    h2 7. Governing Law
+    p Use of this Service shall be governed by the laws of the jurisdiction in which the deploying organization operates.
+
+    .contact
+      h4 Support and Feedback
+      p If you have any questions or would like to contribute to the project:
+      p Email: !{app.CONTACT || 'waiphyo.dev@gmail.com'}
+      p Issue Tracker: !{app.URL || 'https://github.com/waiphyo285/nodejs-template/issues'}

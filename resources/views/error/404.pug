@@ -1,0 +1,10 @@
+extends layout
+
+block variables
+  - var status = 404
+  - var title = "Page Not Found"
+  - var message = "Oops! The page you are looking for doesn't exist or has been moved to another URL."
+  - var lottieUrl = "https://lottie.host/ea98919b-4019-403c-816a-d7e615530b48/q4tngoDpvd.json"
+
+//- overwrite the layout if needed, but the layout is self-contained for now.
+//- I'll shift the logic to error.pug and keep status files as entry points.

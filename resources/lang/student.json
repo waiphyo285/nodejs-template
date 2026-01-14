@@ -1,0 +1,30 @@
+{
+    "en_US": {
+        "list": {
+            "name": "Student Name",
+            "age": "Age",
+            "grade": "Grade",
+            "status": "Status"
+        },
+        "entry": {
+            "name": "Student Name",
+            "age": "Age",
+            "grade": "Grade",
+            "status": "Status"
+        }
+    },
+    "my_MM": {
+        "list": {
+            "name": "ကျောင်းသားအမည်",
+            "age": "အသက်",
+            "grade": "အမှတ်",
+            "status": "အခြေအနေ"
+        },
+        "entry": {
+            "name": "ကျောင်းသားအမည်",
+            "age": "အသက်",
+            "grade": "အမှတ်",
+            "status": "အခြေအနေ"
+        }
+    }
+}

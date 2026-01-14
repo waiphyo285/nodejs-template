@@ -1,0 +1,30 @@
+{
+    "en_US": {
+        "list": {
+            "name": "Teacher Name",
+            "age": "Age",
+            "degree": "Degree",
+            "status": "Status"
+        },
+        "entry": {
+            "name": "Teacher Name",
+            "age": "Age",
+            "degree": "Degree",
+            "status": "Status"
+        }
+    },
+    "my_MM": {
+        "list": {
+            "name": "ဆရာ/ဆရာမအမည်",
+            "age": "အသက်",
+            "degree": "ဘွဲ့",
+            "status": "အခြေအနေ"
+        },
+        "entry": {
+            "name": "ဆရာ/ဆရာမအမည်",
+            "age": "အသက်",
+            "degree": "ဘွဲ့",
+            "status": "အခြေအနေ"
+        }
+    }
+}
